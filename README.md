@@ -1,4 +1,4 @@
-# Molhem مُلهِم
+# Molhem
 301 Project - Molhem is a website that inspires its user's from different creative backgrounds with new ideas.
 
 **Team Members** 
