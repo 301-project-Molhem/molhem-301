@@ -40,13 +40,17 @@
 
     <main>
         <section id="mainIDSearch">
-            <form action="">
+            <form action="/search" method="POST">
                 <legend>Search</legend>
                 <label for="">
                     <input type="text" placeholder="search for ideas">
                 </label>
-                <label for=""><input type="radio">Dribble</label>
-                <label for=""><input type="radio">Pixabay</label>
+                <label for="">
+                    <input type="radio" name="selectApi">Dribble</label>
+
+                <label for="">
+                    <input type="radio" name="selectApi">Pixabay</label>
+
                 <button type="submit">Search</button>
             </form>
 

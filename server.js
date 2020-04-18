@@ -7,7 +7,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const methodOverride = require('method-override');
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -22,6 +22,10 @@ app.use(cors());
 
 app.get('/', (request, response) => {
     response.status(200).send('Home Page');
+});
+
+app.get('/search',(request, response)=>{
+    response.render('/pages/search');
 });
 
 app.use('*', notFoundHandler);
