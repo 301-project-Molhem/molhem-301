@@ -43,115 +43,19 @@
     <main id="mainID">
         <h1>Top Ideas</h1>
         <section id="topPicks">
+            <%photos.forEach(item =>{%>
             <section>
-                <a href="" id="addIcon"><img src="./resources/addIcon.png" alt="add icon"></a>
-                <img src="./resources/placeholder.png" alt="">
+                <img src="<%=item.img_url%>">
                 <div>
-                    <h2>Title: The ultimate test of tests.</h2>
-                    <h3>Creator: Lorem Bin Ipsum</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Dribble</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
+                    <h2>Title:<%= item.title %></h2>
+                    <h3>Creator:<%= item.creator_name%></h3>
+                    <p>Categories:<%= item.categories%></p>
+                    <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
+                    <p>likes: <%= item.likes%></p>
                 </div>
+                
             </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, aperiam dolores veniam facilis,
-                        obcaecati veritatis architecto, repellat ipsam praesentium qui deleniti molestiae? Voluptatibus
-                        perferendis excepturi eius omnis minus aliquid provident.</p>
-                </div>
-            </section>
+            <% }) %>
 
             <a href="#toSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
 
@@ -199,9 +103,9 @@
             </section>
             <a href="">See more saved ideas</a>
         </section>
-        
+
     </main>
-    
+
     <footer>
         <p>All Rights Reserved @2020</p>
     </footer>
