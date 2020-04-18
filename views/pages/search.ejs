@@ -67,15 +67,15 @@
             </div>
              
             <div id="pixabayResults">
-                <%books.forEach(val=>{%>
+                <%keyPhoto.forEach(item=>{%>
 
 
-               <h2>Title :<%=hits.tags%></h2>
-                <h2>Creator : <%=hits.user%> </h2>
-                <p>Categories:<%=hits.type %></p>
-                <a href="<%=hits.pageURL%>">source_URL</a>
-                <a href="<%=hits.largeImageURL%>">image_URL</a>
-                <p>Likes : <%=hits.likes%></p>
+               <h2>Title :<%=item.title%></h2>
+                <h2>Creator : <%=item.creator_name%> </h2>
+                <p>Categories:<%=item.categories %></p>
+                <a href="<%=item.source_URL%>">source_URL</a>
+                <a href="<%=item.image_url%>">image_URL</a>
+                <p>Likes : <%=item.likes%></p>
 
                 <%})%>
 
