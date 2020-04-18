@@ -1,0 +1,31 @@
+{
+  "name": "molhem-301",
+  "version": "1.0.0",
+  "description": "301 Project - Molhem is a website that inspires its user's from different creative backgrounds with new ideas.",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "pg": "^8.0.2",
+    "superagent": "^5.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/301-project-Molhem/molhem-301.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/301-project-Molhem/molhem-301/issues"
+  },
+  "homepage": "https://github.com/301-project-Molhem/molhem-301#readme"
+}
