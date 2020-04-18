@@ -21,85 +21,82 @@ app.use(cors());
 
 
 
-app.get('/search', (request, response) => {
-    response.render('/pages/search');
-});
+// app.get('/search', (request, response) => {
+//     response.render('/pages/search');
+// });
 
 
-app.post('/search', (req, res) => {
-    let searchType = req.body.selectType;
-    let searchKeyword = req.body.picName;
-    let apiSelect = req.body.selectApi;
-    imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
-    videoUrlPix = `https://pixabay.com/api/videos/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
-    // imageUrlGoogle = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`; //change
+// app.post('/search', (req, res) => {
+//     let searchType = req.body.selectType;
+//     let searchKeyword = req.body.picName;
+//     let apiSelect = req.body.selectApi;
+//     imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
+//     videoUrlPix = `https://pixabay.com/api/videos/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
+//     // imageUrlGoogle = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`; //change
 
-    if (apiSelect === 'Pixabay') {
-        if (searchType === 'image') {
+//     if (apiSelect === 'Pixabay') {
+//         if (searchType === 'image') {
 
-        } else if (searchType === 'video') {
+//         } else if (searchType === 'video') {
 
-        }
+//         }
 
-    } else if (apiSelect === 'google') {
+//     } else if (apiSelect === 'google') {
 
-    }
+//     }
 
-    let ideaCollection = [];
+//     let ideaCollection = [];
 
-    superagent.get(url)
-        .then(pic => {
-            let arrayItems = pic.body.hits;
-            let photos = arrayItems.map(data => {
-                let photoItem = new Photo(data);
-                ideaCollection.push(photoItem);
-                return photoItem;
-            })
-            response.render('pages/search', { keyPhoto: photos });
-        })
-        .catch(error => {
-            res.render('pages/error');
-        });
-});
-
-
-
-function Photo(data) {
-    this.title = data.hits.tags;
-    this.creator_name = data.hits.user;
-    this.categories = data.hits.type;
-    this.source_URL = data.hits.pageURL;
-    this.image_url = data.hits.largeImageURL;
-    this.likes = data.hits.likes;
-}
-
-
-app.use('*', notFoundHandler);
+//     superagent.get(url)
+//         .then(pic => {
+//             let arrayItems = pic.body.hits;
+//             let photos = arrayItems.map(data => {
+//                 let photoItem = new Photo(data);
+//                 ideaCollection.push(photoItem);
+//                 return photoItem;
+//             })
+//             response.render('pages/search', { keyPhoto: photos });
+//         })
+//         .catch(error => {
+//             res.render('pages/error');
+//         });
+// });
 
 
 
-
+// function Photo(data) {
+//     this.title = data.hits.tags;
+//     this.creator_name = data.hits.user;
+//     this.categories = data.hits.type;
+//     this.source_URL = data.hits.pageURL;
+//     this.image_url = data.hits.largeImageURL;
+//     this.likes = data.hits.likes;
+// }
 //////////////////////////////////////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {
-let key=process.env.PIXABAY_API_KEY;
-let pixUrl=`https://pixabay.com/api/?key=${key}&q=design`;
-console.log(key);
+    let key = process.env.PIXABAY_API_KEY;
+    let pixUrl = `https://pixabay.com/api/?key=${key}&q=design`;
+    console.log(key);
     superagent(pixUrl)
         .then(pixRes => {
-           console.log(pixRes);
+            console.log(pixRes);
+
             let pixData = pixRes.body.hits.map((element) => {
-                return new Photo(element)
+                return new Photos(element)
             })
-           
-            res.render('pages/index', { photos: pixData })
-            
+            let sortPixData = pixData.sort((a,b) => {
+                return b.likes - a.likes
+            })
+            let top = sortPixData.slice(0,6);
+            res.render('pages/index', { photos: top })
+
         }).catch((err) => {
             errorHandler(err, req, res);
         });
 }
 ///////////////////constructor/////////////////////////////////////////////////////
-function Photo(data) {
+function Photos(data) {
     this.title = data.tags;
     this.creator_name = data.user;
     this.categories = data.type;
