@@ -40,13 +40,22 @@
 
     <main>
         <section id="mainIDSearch">
-            <form action="">
+            <form action="/search" method="POST">
                 <legend>Search</legend>
                 <label for="">
-                    <input type="text" placeholder="search for ideas">
+                    <input type="text" name="picName" placeholder="search for ideas">
                 </label>
-                <label for=""><input type="radio">Dribble</label>
-                <label for=""><input type="radio">Pixabay</label>
+                <label for="">
+                    <input type="radio" name="selectApi" value="Dribble">Dribble</label>
+
+                <label for="">
+                    <input type="radio" name="selectApi" value="Pixabay">Pixabay</label>
+
+                <label for="">
+                    <input type="radio" name="selectType" value="image">image</label>
+                <label for="">
+                    <input type="radio" name="selectType" value="video">video</label>
+
                 <button type="submit">Search</button>
             </form>
 
@@ -56,13 +65,24 @@
             <div id="dribbleResults">
 
             </div>
-
+             
             <div id="pixabayResults">
+                <%keyPhoto.forEach(item=>{%>
+
+
+               <h2>Title :<%=item.title%></h2>
+                <h2>Creator : <%=item.creator_name%> </h2>
+                <p>Categories:<%=item.categories %></p>
+                <a href="<%=item.source_URL%>">source_URL</a>
+                <a href="<%=item.image_url%>">image_URL</a>
+                <p>Likes : <%=item.likes%></p>
+
+                <%})%>
 
             </div>
 
         </section>
-        
+
 
     </main>
 
