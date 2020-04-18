@@ -28,6 +28,45 @@ app.get('/search',(request, response)=>{
     response.render('/pages/search');
 });
 
+
+app.post('/search', (req, res) => {
+    let searchType = req.body.selectType;
+    let searchKeyword = req.body.picName;
+    let apiSelect = req.body.selectApi;
+    imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
+    videoUrlPix = `https://pixabay.com/api/videos/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`; 
+    // imageUrlGoogle = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`; //change
+
+    if (apiSelect === 'Pixabay') {
+        if (searchType === 'image'){
+
+        }else if (searchType === 'video') {
+
+        }
+ 
+    } else if (apiSelect === 'google') {
+
+    }
+
+
+
+superagent.get(url)
+.then(data=>{
+    let arrayItems=data.body.hits;
+
+})
+
+function Photo(data) {
+    this.title = hits.tags;
+    this.creator_name=hits.user;
+    this.categories=hits.type;
+    this.source_URL=hits.pageURL;
+    this.image_url=hits.largeImageURL;
+    this.likes=hits.likes;
+    this.owner=hits.user;
+}
+
+
 app.use('*', notFoundHandler);
 
 
