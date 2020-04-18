@@ -40,13 +40,22 @@
 
     <main>
         <section id="mainIDSearch">
-            <form action="">
+            <form action="/search" method="POST">
                 <legend>Search</legend>
                 <label for="">
-                    <input type="text" placeholder="search for ideas">
+                    <input type="text" name="picName" placeholder="search for ideas">
                 </label>
-                <label for=""><input type="radio">Dribble</label>
-                <label for=""><input type="radio">Pixabay</label>
+                <label for="">
+                    <input type="radio" name="selectApi" value="Dribble">Dribble</label>
+
+                <label for="">
+                    <input type="radio" name="selectApi" value="Pixabay">Pixabay</label>
+
+                <label for="">
+                    <input type="radio" name="selectType" value="image">image</label>
+                <label for="">
+                    <input type="radio" name="selectType" value="video">video</label>
+
                 <button type="submit">Search</button>
             </form>
 
@@ -56,13 +65,24 @@
             <div id="dribbleResults">
 
             </div>
-
+             
             <div id="pixabayResults">
+                <%books.forEach(val=>{%>
+
+
+               <h2>Title :<%=hits.tags%></h2>
+                <h2>Creator : <%=hits.user%> </h2>
+                <p>Categories:<%=hits.type %></p>
+                <a href="<%=hits.pageURL%>">source_URL</a>
+                <a href="<%=hits.largeImageURL%>">image_URL</a>
+                <p>Likes : <%=hits.likes%></p>
+
+                <%})%>
 
             </div>
 
         </section>
-        
+
 
     </main>
 
