@@ -29,7 +29,7 @@ app.get('/search/new', (request, response) => {
 // we need to figure out how to get the results of two apis in one response 
 // we can combine the array for each api in one array using push and then render the full array and we should remeber to have the same property names
 
-
+/////////////////////////////////search page ////////////////////////////////////////////////////
 app.post('/search', (request, response) => {
 
     let fullArr = [];
@@ -69,6 +69,8 @@ app.post('/search', (request, response) => {
             } else if (apiSelect === 'unsplash'){
                 let unsplash = fullArr.slice(20,30);
                 response.render('pages/results', { keyPhoto: unsplash });
+            }else{
+                response.render('pages/results', { keyPhoto: fullArr });
             }
         })
         .catch(error => {
@@ -77,9 +79,11 @@ app.post('/search', (request, response) => {
 });
 
 
-//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////home page/////////////////////////////////////////////////////////
+
 app.get('/', topten);
 function topten(req, res) {
+
     let topArray = [];
     let key = process.env.PIXABAY_API_KEY;
     let pixUrl = `https://pixabay.com/api/?key=${key}&q=design`;
@@ -116,6 +120,32 @@ function topten(req, res) {
                 });
         })
 }
+/////////////////////saved ideas from home page////////////////////////////////////////////////////
+
+app.post('/', saveidea);
+ function saveidea(req,res){
+    let title = req.body.title;
+    let creator_name = req.body.creator_name;
+    let categories = req.body.categories;
+    let source_URL = req.body.source_URL;
+
+    let SQL = 'INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
+    let safeValues = [title, creator_name, categories, source_URL];
+    return client.query(SQL, safeValues)
+        .then(() => {
+            res.redirect('/saved');
+        });
+    
+ }
+
+ app.get('/saved',save);
+ function save (req,res){
+    let SQL = 'SELECT * FROM savedIdeas;';
+    client.query(SQL)
+        .then(result => {
+            res.render('pages/saved', { data: result.rows });
+        });
+ }
 
 ///////////////////constructor/////////////////////////////////////////////////////
 function Photos(data) {
@@ -135,8 +165,6 @@ function Ideas(item) {
     this.likes = item.likes;
     this.img_url = item.urls.full;
 }
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

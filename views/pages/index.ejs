@@ -52,6 +52,17 @@
                     <p>Categories:<%= item.categories%></p>
                     <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
                     <p>likes: <%= item.likes%></p>
+
+                    <form action="/" method="POST" >
+                    <input type="text" name="img_url" value="<%=item.img_url%>">
+                    <input type="text" name="title" value="<%= item.title %>">
+                    <input type="text" name="creator_name" value="<%= item.creator_name%>">
+                    <input type="text" name="categories" value="<%= item.categories%>">
+                    <input type="text" name="source_URL" value="<%=item.source_URL%>">
+                    <input type="text" name="likes" value=" <%= item.likes%>">
+        
+                    <button type="submit">save idea</button>
+                </form>
                 </div>
                 
             </section>
