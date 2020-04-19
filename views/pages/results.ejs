@@ -117,11 +117,12 @@
                              }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:8000/search/add',
+                    url: 'http://localhost:5555/search/add',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function(res){
-                        console.log('success function', res)
+                        console.log('success function', res);
+                        alert('Great Idea! You can check it anytime in the saved ideas page.')
                         //alert
                     },
                     contentType : "application/json"
