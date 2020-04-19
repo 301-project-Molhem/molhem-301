@@ -70,14 +70,17 @@
                 
                 <%keyPhoto.forEach(item =>{%>
                     <section>
-                        <img src="<%=item.img_url%>">
+                        <form action="/search">
+                        <img src="<%=item.img_url%>"><input type="hidden" value="<%=item.img_url%>" name="imgURLHid">
                         <div>
-                            <h2>Title:<%= item.title %></h2>
+                            <h2>Title:<%= item.title %></h2> <input type="hidden" value="<%= item.title %>" name="titleHid">
                             <h3>Creator:<%= item.creator_name%></h3>
                             <p>Categories:<%= item.categories%></p>
                             <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
                             <p>likes: <%= item.likes%></p>
                         </div>
+                        <button type="submit">add</button>
+                       </form>
                         
                     </section>
                     <% }) %>

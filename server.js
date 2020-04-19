@@ -24,6 +24,12 @@ app.get('/search/new', (request, response) => {
     response.render('pages/search');
 });
 
+app.post('/search',(req,res)=>{
+    console.log(req.body.imgURLHid)
+      
+})
+
+
 
 
 // we need to figure out how to get the results of two apis in one response 
