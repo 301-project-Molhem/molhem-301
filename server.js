@@ -69,6 +69,8 @@ app.post('/search', (request, response) => {
             } else if (apiSelect === 'unsplash'){
                 let unsplash = fullArr.slice(20,30);
                 response.render('pages/results', { keyPhoto: unsplash });
+            }else{
+                response.render('pages/results', { keyPhoto: fullArr });
             }
         })
         .catch(error => {
