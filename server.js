@@ -1,6 +1,7 @@
 'use strict'
 
 require('dotenv').config();
+const flash = require('express-flash');
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
@@ -15,9 +16,23 @@ client.on('error', errorHandler);
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(cors());
+app.use(flash());
+
+var session = require('express-session');
+
+
+app.use(session({
+  cookie: { maxAge: 60000 },
+  secret: 'woot',
+  resave: false,
+  saveUninitialized: false
+}));
+
+
 
 
 app.get('/search/new', (request, response) => {
@@ -25,11 +40,6 @@ app.get('/search/new', (request, response) => {
 });
 
 
-
-
-
-// we need to figure out how to get the results of two apis in one response 
-// we can combine the array for each api in one array using push and then render the full array and we should remeber to have the same property names
 
 
 app.post('/search', (request, response) => {
@@ -70,6 +80,8 @@ app.post('/search', (request, response) => {
             } else if (apiSelect === 'unsplash'){
                 let unsplash = fullArr.slice(20,30);
                 response.render('pages/results', { keyPhoto: unsplash });
+            } else {
+                response.render('pages/results', { keyPhoto: fullArr });
             }
         })
         .catch(error => {
@@ -77,15 +89,31 @@ app.post('/search', (request, response) => {
         });
 });
 
-app.post('/search/add',(req,res)=>{
 
+app.post('/search/add',(req,res)=>{
+    console.log(req.body);
+    
     let { titleHid, creatorHid, categoriesHid, sourceHid}=req.body;
-    let SQL ='INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
-    let safeValues=[ titleHid, creatorHid, categoriesHid, sourceHid];
-    return client.query(SQL,safeValues)
-    .then(()=>{
-        res.redirect('/search/new')
+    
+    let searchSQL = 'SELECT * FROM savedIdeas WHERE source_URL=$1'
+    let searchVal = [sourceHid];
+
+    client.query(searchSQL, searchVal).then((searchResult)=> {
+        if(searchResult.rows.length === 0){
+            console.log('hi')
+            let SQL ='INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
+            let safeValues=[ titleHid, creatorHid, categoriesHid, sourceHid];
+            return client.query(SQL,safeValues)
+            .then(()=>{
+                res.status(200).json({status: 'done'});
+            })
+            
+        } else {
+            res.status(200).json({status: 'done'});
+        }
     })
+
+
 
 })
 
