@@ -75,25 +75,51 @@ app.use(cors());
 //////////////////////////////////////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {
+    let topArray = [];
     let key = process.env.PIXABAY_API_KEY;
     let pixUrl = `https://pixabay.com/api/?key=${key}&q=design`;
-    console.log(key);
-    superagent(pixUrl)
+    let unsplashKey = process.env.UNSPLASH_KEY;
+    let unsplashURL = `https://api.unsplash.com/search/photos?query=design&client_id=${unsplashKey}`
+    superagent.get(pixUrl)
         .then(pixRes => {
-            console.log(pixRes);
-
             let pixData = pixRes.body.hits.map((element) => {
                 return new Photos(element)
             })
-            let sortPixData = pixData.sort((a,b) => {
+            let sortPixData = pixData.sort((a, b) => {
                 return b.likes - a.likes
             })
-            let top = sortPixData.slice(0,6);
-            res.render('pages/index', { photos: top })
+            let top = sortPixData.slice(0, 6)
+            top.forEach((item) => topArray.push(item))
+            return (topArray);
+        }).then((topArray) => {
+            superagent.get(unsplashURL)
+                .then((unsplashRes) => {
+                    const unsplashBody = unsplashRes.body.results;
+                    const unsplashData = unsplashBody.map(item => {
+                        return new Ideas(item);
+                    })
+                    let sortUnsData = unsplashData.sort((a, b) => {
+                        return b.likes - a.likes
+                    })
+                    let final = sortUnsData.slice(0, 6)
+                    final.forEach((item) => topArray.push(item))
+                    return topArray;
+                }).then((topArray) => {
+                    res.render('pages/index', { photos: topArray })
+                }).catch(error => {
+                    res.render('pages/error');
+                });
+        })
+}
 
-        }).catch((err) => {
-            errorHandler(err, req, res);
-        });
+
+function Ideas(item) {
+    this.title = (item.title) ? item.title : 'title not available';
+    this.creator_name = item.user.name;
+    this.categories = item.type;
+    this.source_URL =  item.urls.full;
+    this.likes = item.likes;
+    this.img_url = item.urls.full;
 }
 ///////////////////constructor/////////////////////////////////////////////////////
 function Photos(data) {
