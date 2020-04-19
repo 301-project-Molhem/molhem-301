@@ -32,43 +32,48 @@ app.get('/search/new', (request, response) => {
 
 app.post('/search', (request, response) => {
 
+    let fullArr = [];
     let searchType = request.body.selectType;
     let apiSelect = request.body.selectApi;
     let searchKeyword = request.body.picName;
     let unsplashKey = process.env.UNSPLASH_KEY;
+    let imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
+    let unsplashURL = `https://api.unsplash.com/search/photos?query=${searchKeyword}&client_id=${unsplashKey}`;
 
-    if (apiSelect === 'pixabay') {
-
-        let imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
-
-        superagent.get(imageUrlPix)
-            .then((pixRes) => {
-                let pixData = pixRes.body.hits;
-                let pixDataArray = pixData.map((data) => {
-                    return new Photos(data);
-                })
-                response.render('pages/results', { keyPhoto: pixDataArray });
-            })
-            .catch(error => {
-                response.render('pages/error');
+    superagent.get(imageUrlPix)
+        .then((pixRes) => {
+            let pixData = pixRes.body.hits;
+            let pixDataArray = pixData.map((data) => {
+                return new Photos(data);
             });
 
-    } else if (apiSelect === 'unsplash') {
+            pixDataArray.forEach((item)=> fullArr.push(item))
+            console.log('after first push', fullArr);
+            return (fullArr);
 
-        let unsplashURL = `https://api.unsplash.com/search/photos?query=${searchKeyword}&client_id=${unsplashKey}`
-
-        superagent(unsplashURL).then((unsplashRes) => {
-            let unsplashBody = unsplashRes.body.results;
-            let unsplashArray = unsplashBody.map(item => {
-                return new Ideas(item);
+        }).then((fullArr) => {
+           
+            return superagent.get(unsplashURL).then((unsplashRes) => {
+                let unsplashBody = unsplashRes.body.results;
+                let unsplashArray = unsplashBody.map(item => {
+                    return new Ideas(item);
+                })
+                unsplashArray.forEach((item)=> fullArr.push(item))             
+                return fullArr;    
             })
-            console.log('hi', unsplashArray)
-            response.render('pages/results', { keyPhoto: unsplashArray });
+
+        }).then((fullArr) => {
+            if (apiSelect === 'pixabay'){
+                let pixaBay = fullArr.slice(0,20);
+                response.render('pages/results', { keyPhoto: pixaBay });
+            } else if (apiSelect === 'unsplash'){
+                let unsplash = fullArr.slice(20,30);
+                response.render('pages/results', { keyPhoto: unsplash });
+            }
         })
-            .catch((error) => errorHandler(error, request, response));
-
-    }
-
+        .catch(error => {
+            response.render('pages/error');
+        });
 });
 
 
@@ -108,11 +113,13 @@ function Photos(data) {
 function Ideas(item) {
     this.title = (item.title) ? item.title : 'title not available';
     this.creator_name = item.user.name;
-    this.categories = item.type;
-    this.source_URL = item.pageURL;
+    this.categories = (item.type? item.type : 'categories not available');
+    this.source_URL = item.urls.full;
     this.likes = item.likes;
     this.img_url = item.urls.full;
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
