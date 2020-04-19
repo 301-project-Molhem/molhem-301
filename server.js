@@ -20,58 +20,63 @@ app.set('view engine', 'ejs');
 app.use(cors());
 
 
-
-// app.get('/search', (request, response) => {
-//     response.render('/pages/search');
-// });
-
-
-// app.post('/search', (req, res) => {
-//     let searchType = req.body.selectType;
-//     let searchKeyword = req.body.picName;
-//     let apiSelect = req.body.selectApi;
-//     imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
-//     videoUrlPix = `https://pixabay.com/api/videos/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
-//     // imageUrlGoogle = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`; //change
-
-//     if (apiSelect === 'Pixabay') {
-//         if (searchType === 'image') {
-
-//         } else if (searchType === 'video') {
-
-//         }
-
-//     } else if (apiSelect === 'google') {
-
-//     }
-
-//     let ideaCollection = [];
-
-//     superagent.get(url)
-//         .then(pic => {
-//             let arrayItems = pic.body.hits;
-//             let photos = arrayItems.map(data => {
-//                 let photoItem = new Photo(data);
-//                 ideaCollection.push(photoItem);
-//                 return photoItem;
-//             })
-//             response.render('pages/search', { keyPhoto: photos });
-//         })
-//         .catch(error => {
-//             res.render('pages/error');
-//         });
-// });
+app.get('/search/new', (request, response) => {
+    response.render('pages/search');
+});
 
 
 
-// function Photo(data) {
-//     this.title = data.hits.tags;
-//     this.creator_name = data.hits.user;
-//     this.categories = data.hits.type;
-//     this.source_URL = data.hits.pageURL;
-//     this.image_url = data.hits.largeImageURL;
-//     this.likes = data.hits.likes;
-// }
+// we need to figure out how to get the results of two apis in one response 
+// we can combine the array for each api in one array using push and then render the full array and we should remeber to have the same property names
+
+
+app.post('/search', (request, response) => {
+
+    let fullArr = [];
+    let searchType = request.body.selectType;
+    let apiSelect = request.body.selectApi;
+    let searchKeyword = request.body.picName;
+    let unsplashKey = process.env.UNSPLASH_KEY;
+    let imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
+    let unsplashURL = `https://api.unsplash.com/search/photos?query=${searchKeyword}&client_id=${unsplashKey}`;
+
+    superagent.get(imageUrlPix)
+        .then((pixRes) => {
+            let pixData = pixRes.body.hits;
+            let pixDataArray = pixData.map((data) => {
+                return new Photos(data);
+            });
+
+            pixDataArray.forEach((item)=> fullArr.push(item))
+            console.log('after first push', fullArr);
+            return (fullArr);
+
+        }).then((fullArr) => {
+           
+            return superagent.get(unsplashURL).then((unsplashRes) => {
+                let unsplashBody = unsplashRes.body.results;
+                let unsplashArray = unsplashBody.map(item => {
+                    return new Ideas(item);
+                })
+                unsplashArray.forEach((item)=> fullArr.push(item))             
+                return fullArr;    
+            })
+
+        }).then((fullArr) => {
+            if (apiSelect === 'pixabay'){
+                let pixaBay = fullArr.slice(0,20);
+                response.render('pages/results', { keyPhoto: pixaBay });
+            } else if (apiSelect === 'unsplash'){
+                let unsplash = fullArr.slice(20,30);
+                response.render('pages/results', { keyPhoto: unsplash });
+            }
+        })
+        .catch(error => {
+            response.render('pages/error');
+        });
+});
+
+
 //////////////////////////////////////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {
@@ -112,15 +117,6 @@ function topten(req, res) {
         })
 }
 
-
-function Ideas(item) {
-    this.title = (item.title) ? item.title : 'title not available';
-    this.creator_name = item.user.name;
-    this.categories = item.type;
-    this.source_URL =  item.urls.full;
-    this.likes = item.likes;
-    this.img_url = item.urls.full;
-}
 ///////////////////constructor/////////////////////////////////////////////////////
 function Photos(data) {
     this.title = data.tags;
@@ -130,6 +126,17 @@ function Photos(data) {
     this.likes = data.likes;
     this.img_url = data.largeImageURL;
 }
+
+function Ideas(item) {
+    this.title = item.tags[1].title
+    this.creator_name = item.user.name;
+    this.categories = (item.type? item.type : 'photo');
+    this.source_URL = (item.user.portfolio_url ? item.user.portfolio_url: item.urls.full);
+    this.likes = item.likes;
+    this.img_url = item.urls.full;
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
