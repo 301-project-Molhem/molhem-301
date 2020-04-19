@@ -24,10 +24,6 @@ app.get('/search/new', (request, response) => {
     response.render('pages/search');
 });
 
-app.post('/search',(req,res)=>{
-    console.log(req.body.imgURLHid)
-      
-})
 
 
 
@@ -54,7 +50,6 @@ app.post('/search', (request, response) => {
             });
 
             pixDataArray.forEach((item)=> fullArr.push(item))
-            console.log('after first push', fullArr);
             return (fullArr);
 
         }).then((fullArr) => {
@@ -82,6 +77,17 @@ app.post('/search', (request, response) => {
         });
 });
 
+app.post('/search/add',(req,res)=>{
+
+    let { titleHid, creatorHid, categoriesHid, sourceHid}=req.body;
+    let SQL ='INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
+    let safeValues=[ titleHid, creatorHid, categoriesHid, sourceHid];
+    return client.query(SQL,safeValues)
+    .then(()=>{
+        res.redirect('/search/new')
+    })
+
+})
 
 //////////////////////////////////////////////////////////////////////////////////////
 app.get('/', topten);
