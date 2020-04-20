@@ -110,21 +110,20 @@
 
     </main>
 
-    <footer>
+    
+  <footer>
         <div class="footer">
             <div class="inner-footer">
           
-          <!--  for company name and description -->
               <div class="footer-items">
-                <h1>MOLHEM</h1>
+                <h1 style="font-size: 30px;" >MOLHEM</h1>
                 <br>
                 <p>In our site you will see all the the things that will inspire you</p>
               </div>
           
-          <!--  for quick links  -->
               <div class="footer-items">
                 <h3>Quick Links</h3>
-                <div class="border1"></div> <!--for the underline -->
+                <div class="border1"></div> 
                   <ul>
                     <a href="#"><li>Home</li></a>
                     <a href="#"><li>Search</li></a>
@@ -133,10 +132,9 @@
                   </ul>
               </div>
           
-          <!--  for some other links -->
               <div class="footer-items">
                 <h3>Categories</h3>
-                <div class="border1"></div>  <!--for the underline -->
+                <div class="border1"></div>  
                   <ul>
                     <a href="#"><li>Design</li></a>
                     <a href="#"><li>Sports</li></a>
@@ -145,7 +143,6 @@
                   </ul>
               </div>
           
-          <!--  for contact us info -->
               <div class="footer-items">
                 <h3>Contact us</h3>
                 <div class="border1"></div>
@@ -155,7 +152,6 @@
                     <li><i class="fa fa-envelope" aria-hidden="true"></i>xyz@gmail.com</li>
                   </ul> 
                 
-          <!--   for social links -->
                   <div class="social-media">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook"></i></a>
@@ -164,13 +160,13 @@
               </div>
             </div>
             
-          <!--   Footer Bottom start  -->
             <div class="footer-bottom">
               Copyright &copy; Molhem 2020.
             </div>
           </div>    </footer>
 
 
+ 
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -194,7 +190,7 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:5555/',
+                    url: 'http://localhost:8000/',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {

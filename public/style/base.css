@@ -509,16 +509,22 @@ header {
 
 /* for tablet mode view */
 
-@media screen and (max-width: 1275px) {
+ @media screen and (max-width: 1275px) {
 	.footer-items {
 		width: 50%;
 	}
-}
+} 
 
 /* for mobile screen view */
 
-@media screen and (max-width: 660px) {
+ @media screen and (max-width: 660px) {
 	.footer-items {
 		width: 100%;
 	}
 }
+
+
+
+
+
+  
