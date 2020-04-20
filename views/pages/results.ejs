@@ -67,21 +67,23 @@
             </div>
 
             <div id="pixabayResults">
-                
-                <%keyPhoto.forEach(item =>{%>
-                    <section>
+
+                <%keyPhoto.forEach((item, idx) =>{%>
+                <section>
+                    <button class="btn">Add item<%=idx%></button>
+                    <div id="resultDiv">
                         <img src="<%=item.img_url%>">
                         <div>
                             <h2>Title:<%= item.title %></h2>
-                            <h3>Creator:<%= item.creator_name%></h3>
-                            <p>Categories:<%= item.categories%></p>
-                            <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
-                            <p>likes: <%= item.likes%></p>
+                            <h3>Creator:<%= item.creator_name%></h3> 
+                            <h4>Categories:<%= item.categories%></h4>
+                            <h5>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></h5>
+                            <h6>likes: <%= item.likes%></h6>
                         </div>
-                        
-                    </section>
-                    <% }) %>
+                    </div>
 
+                </section>
+                <% }) %>
             </div>
 
         </section>
@@ -95,10 +97,40 @@
     </footer>
 
 
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
     <script src="js/app.js"></script>
+
+
+    <script>
+        $(document).ready(() => {
+
+            $('.btn').on( 'click', function (event) {
+                event.preventDefault();
+                const data = { 
+                              titleHid: $(this).next('#resultDiv').find('h2').text(),
+                              creatorHid: $(this).next('#resultDiv').find('h3').text(),
+                              categoriesHid: $(this).next('#resultDiv').find('h4').text(),
+                              sourceHid: $(this).next('#resultDiv').find('h5 a').text()
+                             }
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:3000/search/add',
+                    // url:'https://molhem-development.herokuapp.com/',
+                    data: JSON.stringify(data),
+                    success: function(res){
+                        console.log('success function', res);
+                        alert('Great Idea! You can check it anytime in the saved ideas page.')
+                        //alert
+                    },
+                    contentType : "application/json"
+                });
+            })
+
+        })
+    </script>
 
 </body>
 
