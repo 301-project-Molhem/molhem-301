@@ -25,14 +25,14 @@
                 </div>
 
             </section>
-            <button id="editBtn">Edit</button>
             <form action="/saved/delete?_method=delete" method="POST">
                 <button type="submit">Delete</button>
                 <input type="hidden" value="<%=item.id%>" name="itemID">
             </form>
-
+            
+            <button class="editBtn">Edit</button>
             <section>
-                <form action="/saved/update?_method=put" method="POST">
+                <form action="/saved/update?_method=put" method="POST" class="editForm">
                     <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
                     <label for="titleEdit">
                         <input type="text" value="<%= item.title %>" name="titleEdit">
@@ -62,11 +62,13 @@
             <% }) %>
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $('#editBtn').hide();
-            $('#confirmBtn').on('click', function () {
-                $('#editBtn').toggle();
+            $('.editForm').hide();
+            $('.editBtn').on('click', function () {
+                $(this).next('section').find('.editForm').toggle();
             })
         })
     </script>
