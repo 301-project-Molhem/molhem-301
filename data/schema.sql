@@ -8,9 +8,10 @@ CREATE TABLE savedIdeas (
     categories VARCHAR(255),
     source VARCHAR(255),
     source_URL VARCHAR(65535),
-    description TEXT,
     saveDate DATE,
     notes TEXT,
-    scoreOfTen NUMERIC(2)
+    scoreOfTen NUMERIC(2),
+    likes NUMERIC(10)
+
   );
 

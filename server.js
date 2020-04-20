@@ -203,6 +203,7 @@ app.post('/', saveidea);
 function saveidea(req, res) {
     let img_url=req.body.img_url;
     let title = req.body.title;
+    let likes = req.body.likes;
     let creator_name = req.body.creator_name;
     let categories = req.body.categories;
     let source_URL = req.body.source_URL;
@@ -212,8 +213,8 @@ function saveidea(req, res) {
     client.query(SQLmainsearch, searchValMain)
         .then((mainResult) => {
             if (mainResult.rows.length === 0) {
-                let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4,$5);';
-                let saveValues = [img_url,title, creator_name, categories, source_URL];
+                let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL,likes) VALUES ($1,$2,$3,$4,$5,$6);';
+                let saveValues = [img_url,title, creator_name, categories, source_URL, likes];
                 return client.query(SQL, saveValues)
                     .then(() => {
                         res.status(200).json({ status: 'done' });
