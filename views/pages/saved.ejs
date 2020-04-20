@@ -17,15 +17,55 @@
                 <div>
                     <h2>Title:<%= item.title %></h2>
                     <h3>Creator:<%= item.creator_name%></h3>
-                    <p>Categories:<%= item.categories%></p>
-                    <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
-                    <p>likes: <%= item.likes%></p>
-
+                    <h4>Categories:<%= item.categories%></h4>
+                    <h5>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></h5>
+                    <h6>likes: <%= item.likes%></h6>
+                    <p>Notes: <%=item.notes%></p>
+                    <p>Score: <%=item.scoreoften%></p>
                 </div>
 
             </section>
+            <button id="editBtn">Edit</button>
+
+            <section>
+                <form action="/saved/update?_method=put" method="POST">
+                    <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
+                    <label for="titleEdit">
+                        <input type="text" value="<%= item.title %>" name="titleEdit">
+                    </label>
+                    <label for="categEdit">
+                        <input type="text" value="<%= item.categories%>" name="categEdit">
+                    </label>
+                    <input type="hidden" value="<%= item.creator_name%>" name="creatorEdit">
+                    <input type="hidden" value="<%=item.source_URL%>" name="imgSrcEdit">
+                    <input type="hidden" value="<%= item.likes%>" name="likesEdit">
+                    <label for="noteEdit">
+                        <textarea name="noteEdit" id="" cols="30" rows="10" placeholder="Write any note about this idea"></textarea>
+                    </label>
+                    <input type="hidden" value="<%=item.id%>" name="itemID">
+
+                    <select name="scoreEdit">
+                        <option name="scoreEdit" value="1">1</option>
+                        <option name="scoreEdit" value="2">2</option>
+                        <option name="scoreEdit" value="3">3</option>
+                        <option name="scoreEdit" value="4">4</option>
+                        <option name="scoreEdit" value="5">5</option>
+                    </select>
+                    <button id="confirmBtn">Confirm Edits</button>
+
+                </form>
+
+            </section>
+
             <% }) %>
-           </section>
+        </section>
+
+
+
+
+
+
+
     </main>
 </body>
 
