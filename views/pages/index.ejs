@@ -111,8 +111,64 @@
     </main>
 
     <footer>
-        <p>All Rights Reserved @2020</p>
-    </footer>
+        <div class="footer">
+            <div class="inner-footer">
+          
+          <!--  for company name and description -->
+              <div class="footer-items">
+                <h1>MOLHEM</h1>
+                <br>
+                <p>In our site you will see all the the things that will inspire you</p>
+              </div>
+          
+          <!--  for quick links  -->
+              <div class="footer-items">
+                <h3>Quick Links</h3>
+                <div class="border1"></div> <!--for the underline -->
+                  <ul>
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Search</li></a>
+                    <a href="#"><li>Saved ideas</li></a>
+                    <a href="#"><li>About us</li></a>
+                  </ul>
+              </div>
+          
+          <!--  for some other links -->
+              <div class="footer-items">
+                <h3>Categories</h3>
+                <div class="border1"></div>  <!--for the underline -->
+                  <ul>
+                    <a href="#"><li>Design</li></a>
+                    <a href="#"><li>Sports</li></a>
+                    <a href="#"><li>Nature</li></a>
+                    <a href="#"><li>Fashion</li></a>
+                  </ul>
+              </div>
+          
+          <!--  for contact us info -->
+              <div class="footer-items">
+                <h3>Contact us</h3>
+                <div class="border1"></div>
+                  <ul>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>XYZ, abc</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>123456789</li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i>xyz@gmail.com</li>
+                  </ul> 
+                
+          <!--   for social links -->
+                  <div class="social-media">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-square"></i></a>
+                  </div> 
+              </div>
+            </div>
+            
+          <!--   Footer Bottom start  -->
+            <div class="footer-bottom">
+              Copyright &copy; Molhem 2020.
+            </div>
+          </div>    </footer>
 
 
 
@@ -138,7 +194,7 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:3000/',
+                    url: 'http://localhost:5555/',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
