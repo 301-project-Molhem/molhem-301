@@ -144,7 +144,18 @@ function updateSaved(req, res) {
 
 
 
-
+/********************************************Delete*********************************************/
+app.delete('/saved/delete',deleteSaved);
+function deleteSaved(req,res){
+    let {itemID} = req.body;
+    console.log(itemID);
+    let sqlDelete = 'DELETE FROM savedIdeas  WHERE id=$1';
+    let deleteValues=[itemID];
+    client.query(sqlDelete,deleteValues)
+    .then(()=>{
+      res.redirect('/saved');  
+    })
+}
 /////////////////////////////////home page/////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {

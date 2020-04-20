@@ -26,6 +26,10 @@
 
             </section>
             <button id="editBtn">Edit</button>
+            <form action="/saved/delete?_method=delete" method="POST">
+                <button type="submit">Delete</button>
+                <input type="hidden" value="<%=item.id%>" name="itemID">
+            </form>
 
             <section>
                 <form action="/saved/update?_method=put" method="POST">
@@ -40,7 +44,8 @@
                     <input type="hidden" value="<%=item.source_URL%>" name="imgSrcEdit">
                     <input type="hidden" value="<%= item.likes%>" name="likesEdit">
                     <label for="noteEdit">
-                        <textarea name="noteEdit" id="" cols="30" rows="10" placeholder="Write any note about this idea"></textarea>
+                        <textarea name="noteEdit" id="" cols="30" rows="10"
+                            placeholder="Write any note about this idea"></textarea>
                     </label>
                     <input type="hidden" value="<%=item.id%>" name="itemID">
 
@@ -52,21 +57,19 @@
                         <option name="scoreEdit" value="5">5</option>
                     </select>
                     <button id="confirmBtn">Confirm Edits</button>
-
                 </form>
-
             </section>
-
             <% }) %>
         </section>
-
-
-
-
-
-
-
     </main>
+    <script>
+        $(document).ready(function () {
+            $('#editBtn').hide();
+            $('#confirmBtn').on('click', function () {
+                $('#editBtn').toggle();
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -95,19 +95,13 @@
         <p>All Rights Reserved @2020</p>
 
     </footer>
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
     <script src="js/app.js"></script>
-
-
     <script>
         $(document).ready(() => {
-
-            $('.btn').on('click', function (event) {
+            $('.btn').on( 'click', function (event) {
                 event.preventDefault();
                 const data = {
                     titleHid: $(this).next('#resultDiv').find('h2').text(),
@@ -119,7 +113,7 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:8000/search/add',
+                    url: 'http://localhost:5000/search/add',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
@@ -134,6 +128,8 @@
         })
     </script>
 
-</body>
 
+   
+
+</body>
 </html>
