@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <%-include('../../layout/head')%>
+    <%-include('../layout/head')%>
     <title>Home Page</title>
 
 
@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <%-include('../../layout/header')%>
+        <%-include('../layout/header')%>
         
      <!--  -->
      <div id=container>
@@ -111,16 +111,15 @@
     </main>
 
     <footer>
-        <p>All Rights Reserved @2020</p>
+        <%-include('../layout/footer')%>
     </footer>
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <%-include('../layout/script')%>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
-    <script src="js/app.js"></script>
+   
 
     <script>
 
@@ -138,7 +137,7 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:3000/',
+                    url: 'http://localhost:5000/',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {

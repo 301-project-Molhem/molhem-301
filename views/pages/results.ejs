@@ -4,12 +4,12 @@
 <head>
   
     <title>Search</title>
-    <%-include('../../layout/head')%>
+    <%-include('../layout/head')%>
 </head>
 
 <body>
     <header>
-        <%-include('../../layout/header')%>
+        <%-include('../layout/header')%>
         <h1>Start searching for new ideas!</h1>
         <a href="#mainIDSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
     </header>
@@ -50,11 +50,11 @@
                     <div id="resultDiv">
                         <img src="<%=item.img_url%>">
                         <div>
-                            <h2>Title:<%= item.title %></h2>
-                            <h3>Creator:<%= item.creator_name%></h3>
-                            <h4>Categories:<%= item.categories%></h4>
-                            <h5>Source: <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
-                            <h6>likes: <%= item.likes%></h6>
+                            <h2> <span> Title:</span> <%= item.title %></h2>
+                            <h3> <span>  Creator:</span><%= item.creator_name%></h3>
+                            <h4> <span>Categories: </span> <%= item.categories%></h4>
+                            <h5> <span> Source:</span>  <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
+                            <h6> <span>likes: </span>  <%= item.likes%></h6>
                         </div>
                     </div>
 
@@ -68,13 +68,12 @@
     </main>
 
     <footer>
-        <p>All Rights Reserved @2020</p>
+        <%-include('../layout/footer')%>
 
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <%-include('../layout/script')%>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
-    <script src="js/app.js"></script>
+   
     <script>
         $(document).ready(() => {
             $('.btn').on( 'click', function (event) {
@@ -91,7 +90,7 @@
                 
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:3000/search/add',
+                    url: 'http://localhost:5000/search/add',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
