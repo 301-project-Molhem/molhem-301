@@ -96,16 +96,16 @@ app.post('/search', (request, response) => {
 app.post('/search/add', (req, res) => {
     console.log(req.body.imgHid);
 
-    let { imgHid,titleHid, creatorHid, categoriesHid, sourceHid } = req.body;
+    let { imgHid,titleHid, creatorHid, categoriesHid, sourceHid,likesHid } = req.body;
 
-    let searchSQL = 'SELECT * FROM savedIdeas WHERE source_URL=$1'
+    let searchSQL = 'SELECT * FROM savedIdeas WHERE source_url=$1'
     let searchVal = [sourceHid];
 
     client.query(searchSQL, searchVal).then((searchResult) => {
         if (searchResult.rows.length === 0) {
             console.log('hi')
-            let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4,$5);';
-            let safeValues = [imgHid,titleHid, creatorHid, categoriesHid, sourceHid];
+            let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_url,likes) VALUES ($1,$2,$3,$4,$5,$6);';
+            let safeValues = [imgHid,titleHid, creatorHid, categoriesHid, sourceHid,likesHid];
             return client.query(SQL, safeValues)
                 .then(() => {
                     res.status(200).json({ status: 'done' });
@@ -206,15 +206,15 @@ function saveidea(req, res) {
     let likes = req.body.likes;
     let creator_name = req.body.creator_name;
     let categories = req.body.categories;
-    let source_URL = req.body.source_URL;
+    let source_url = req.body.source_url;
 
-    let SQLmainsearch = 'SELECT * FROM savedIdeas WHERE source_URL=$1 ;';
-    let searchValMain = [source_URL];
+    let SQLmainsearch = 'SELECT * FROM savedIdeas WHERE source_url=$1 ;';
+    let searchValMain = [source_url];
     client.query(SQLmainsearch, searchValMain)
         .then((mainResult) => {
             if (mainResult.rows.length === 0) {
-                let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL,likes) VALUES ($1,$2,$3,$4,$5,$6);';
-                let saveValues = [img_url,title, creator_name, categories, source_URL, likes];
+                let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_url,likes) VALUES ($1,$2,$3,$4,$5,$6);';
+                let saveValues = [img_url,title, creator_name, categories, source_url, likes];
                 return client.query(SQL, saveValues)
                     .then(() => {
                         res.status(200).json({ status: 'done' });
@@ -244,7 +244,7 @@ function Photos(data) {
     this.title = data.tags;
     this.creator_name = data.user;
     this.categories = data.type;
-    this.source_URL = data.pageURL;
+    this.source_url = data.pageURL;
     this.likes = data.likes;
     this.img_url = data.largeImageURL;
 }
@@ -253,7 +253,7 @@ function Ideas(item) {
     this.title = item.tags[1].title
     this.creator_name = item.user.name;
     this.categories = (item.type ? item.type : 'photo');
-    this.source_URL = (item.user.portfolio_url ? item.user.portfolio_url : item.urls.full);
+    this.source_url = (item.user.portfolio_url ? item.user.portfolio_url : item.urls.full);
     this.likes = item.likes;
     this.img_url = item.urls.full;
 }

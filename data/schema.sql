@@ -7,11 +7,11 @@ CREATE TABLE savedIdeas (
     creator_name VARCHAR(255),
     categories VARCHAR(255),
     source VARCHAR(255),
-    source_URL VARCHAR(65535),
+    source_url VARCHAR(65535),
     saveDate DATE,
     notes TEXT,
     scoreOfTen NUMERIC(2),
-    likes NUMERIC(10)
+    likes VARCHAR(255)
 
   );
 

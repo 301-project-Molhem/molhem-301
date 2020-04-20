@@ -19,7 +19,7 @@
                     <h2>Title:<%= item.title %></h2>
                     <h3>Creator:<%= item.creator_name%></h3>
                     <h4>Categories:<%= item.categories%></h4>
-                    <h5>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></h5>
+                    <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
                     <h6>likes: <%= item.likes%></h6>
                     <p>Notes: <%=item.notes%></p>
                     <p>Score: <%=item.scoreoften%></p>
@@ -42,7 +42,7 @@
                         <input type="text" value="<%= item.categories%>" name="categEdit">
                     </label>
                     <input type="hidden" value="<%= item.creator_name%>" name="creatorEdit">
-                    <input type="hidden" value="<%=item.source_URL%>" name="imgSrcEdit">
+                    <input type="hidden" value="<%=item.source_url%>" name="imgSrcEdit">
                     <input type="hidden" value="<%= item.likes%>" name="likesEdit">
                     <label for="noteEdit">
                         <textarea name="noteEdit" id="" cols="30" rows="10"
