@@ -94,9 +94,9 @@ app.post('/search', (request, response) => {
 
 ///////////////////////saved ideas from search page////////////////////////////////////////
 app.post('/search/add', (req, res) => {
-    console.log(req.body);
+    console.log(req.body.imgHid);
 
-    let { titleHid, creatorHid, categoriesHid, sourceHid } = req.body;
+    let { imgHid,titleHid, creatorHid, categoriesHid, sourceHid } = req.body;
 
     let searchSQL = 'SELECT * FROM savedIdeas WHERE source_URL=$1'
     let searchVal = [sourceHid];
@@ -104,8 +104,8 @@ app.post('/search/add', (req, res) => {
     client.query(searchSQL, searchVal).then((searchResult) => {
         if (searchResult.rows.length === 0) {
             console.log('hi')
-            let SQL = 'INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
-            let safeValues = [titleHid, creatorHid, categoriesHid, sourceHid];
+            let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4,$5);';
+            let safeValues = [imgHid,titleHid, creatorHid, categoriesHid, sourceHid];
             return client.query(SQL, safeValues)
                 .then(() => {
                     res.status(200).json({ status: 'done' });
