@@ -122,6 +122,11 @@ app.post('/search/add', (req, res) => {
 
 })
 
+/*******************************************update******************************************** */
+
+
+
+
 /////////////////////////////////home page/////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {
@@ -167,6 +172,7 @@ function topten(req, res) {
 
 app.post('/', saveidea);
 function saveidea(req, res) {
+    let img_url=req.body.img_url;
     let title = req.body.title;
     let creator_name = req.body.creator_name;
     let categories = req.body.categories;
@@ -177,8 +183,8 @@ function saveidea(req, res) {
     client.query(SQLmainsearch, searchValMain)
         .then((mainResult) => {
             if (mainResult.rows.length === 0) {
-                let SQL = 'INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
-                let saveValues = [title, creator_name, categories, source_URL];
+                let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4,$5);';
+                let saveValues = [img_url,title, creator_name, categories, source_URL];
                 return client.query(SQL, saveValues)
                     .then(() => {
                         res.status(200).json({ status: 'done' });
