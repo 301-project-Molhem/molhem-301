@@ -77,7 +77,7 @@
                             <h2>Title:<%= item.title %></h2>
                             <h3>Creator:<%= item.creator_name%></h3>
                             <h4>Categories:<%= item.categories%></h4>
-                            <h5>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></h5>
+                            <h5>Source: <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
                             <h6>likes: <%= item.likes%></h6>
                         </div>
                     </div>
@@ -108,12 +108,14 @@
                     creatorHid: $(this).next('#resultDiv').find('h3').text(),
                     categoriesHid: $(this).next('#resultDiv').find('h4').text(),
                     sourceHid: $(this).next('#resultDiv').find('h5 a').text(),
-                    imgHid: $(this).next('#resultDiv').find('img').attr('src')
-
+                    imgHid: $(this).next('#resultDiv').find('img').attr('src'),
+                    likesHid: $(this).next('#resultDiv').find('h6').text()
                 }
+
+                
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:5000/search/add',
+                    url: 'http://localhost:3000/search/add',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
