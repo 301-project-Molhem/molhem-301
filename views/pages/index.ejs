@@ -45,21 +45,33 @@
         <section id="topPicks">
             <%photos.forEach(item =>{%>
             <section>
-                <img src="<%=item.img_url%>">
-                <div>
-                    <h2>Title:<%= item.title %></h2>
-                    <h3>Creator:<%= item.creator_name%></h3>
-                    <p>Categories:<%= item.categories%></p>
-                    <p>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></p>
-                    <p>likes: <%= item.likes%></p>
+                <button class="btnMain">save idea</button>
+                <div id="top12Div">
+                    <img src="<%=item.img_url%>">
+                    <div>
+                        <h2>Title:<%= item.title %></h2>
+                        <h3>Creator:<%= item.creator_name%></h3>
+                        <h4>Categories:<%= item.categories%></h4>
+                        <h5>Source: <a href="<%=item.source_URL%>"><%=item.source_URL%></a></h5>
+                        <h6>likes: <%= item.likes%></h6>
+
+                        <!-- <form action="/" method="POST" >
+                    <input type="text" name="img_url" value="<%=item.img_url%>">
+                    <input type="text" name="title" value="<%= item.title %>">
+                    <input type="text" name="creator_name" value="<%= item.creator_name%>">
+                    <input type="text" name="categories" value="<%= item.categories%>">
+                    <input type="text" name="source_URL" value="<%=item.source_URL%>">
+                    <input type="text" name="likes" value=" <%= item.likes%>">
+                </form> -->
+                    </div>
                 </div>
-                
             </section>
             <% }) %>
-
             <a href="#toSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
 
         </section>
+
+
 
         <section id="toSearch">
             <div>
@@ -116,6 +128,33 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
     <script src="js/app.js"></script>
+
+    <script>
+
+        $(document).ready(() => {
+            $('.btnMain').on('click', function (event) {
+                event.preventDefault();
+                const data = {
+                    title: $(this).next('#top12Div').find('h2').text(),
+                    creator_name: $(this).next('#top12Div').find('h3').text(),
+                    categories: $(this).next('#top12Div').find('h4').text(),
+                    source_URL: $(this).next('#top12Div').find('h5 a').text()
+                }
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:3000/',
+                    // url:'https://molhem-development.herokuapp.com/',
+                    data: JSON.stringify(data),
+                    success: function (res) {
+                        console.log('success function', res);
+                        alert('Great Idea! You can check it anytime in the saved ideas page.')
+                    },
+                    contentType: "application/json"
+                });
+            })
+
+        })
+    </script>
 
 </body>
 

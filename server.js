@@ -26,10 +26,10 @@ var session = require('express-session');
 
 
 app.use(session({
-  cookie: { maxAge: 60000 },
-  secret: 'woot',
-  resave: false,
-  saveUninitialized: false
+    cookie: { maxAge: 60000 },
+    secret: 'woot',
+    resave: false,
+    saveUninitialized: false
 }));
 
 
@@ -41,7 +41,10 @@ app.get('/search/new', (request, response) => {
 
 
 
+// we need to figure out how to get the results of two apis in one response 
+// we can combine the array for each api in one array using push and then render the full array and we should remeber to have the same property names
 
+/////////////////////////////////search page ////////////////////////////////////////////////////
 app.post('/search', (request, response) => {
 
     let fullArr = [];
@@ -59,26 +62,26 @@ app.post('/search', (request, response) => {
                 return new Photos(data);
             });
 
-            pixDataArray.forEach((item)=> fullArr.push(item))
+            pixDataArray.forEach((item) => fullArr.push(item))
             return (fullArr);
 
         }).then((fullArr) => {
-           
+
             return superagent.get(unsplashURL).then((unsplashRes) => {
                 let unsplashBody = unsplashRes.body.results;
                 let unsplashArray = unsplashBody.map(item => {
                     return new Ideas(item);
                 })
-                unsplashArray.forEach((item)=> fullArr.push(item))             
-                return fullArr;    
+                unsplashArray.forEach((item) => fullArr.push(item))
+                return fullArr;
             })
 
         }).then((fullArr) => {
-            if (apiSelect === 'pixabay'){
-                let pixaBay = fullArr.slice(0,20);
+            if (apiSelect === 'pixabay') {
+                let pixaBay = fullArr.slice(0, 20);
                 response.render('pages/results', { keyPhoto: pixaBay });
-            } else if (apiSelect === 'unsplash'){
-                let unsplash = fullArr.slice(20,30);
+            } else if (apiSelect === 'unsplash') {
+                let unsplash = fullArr.slice(20, 30);
                 response.render('pages/results', { keyPhoto: unsplash });
             } else {
                 response.render('pages/results', { keyPhoto: fullArr });
@@ -89,27 +92,29 @@ app.post('/search', (request, response) => {
         });
 });
 
-
-app.post('/search/add',(req,res)=>{
+///////////////////////saved ideas from search page////////////////////////////////////////
+app.post('/search/add', (req, res) => {
     console.log(req.body);
-    
-    let { titleHid, creatorHid, categoriesHid, sourceHid}=req.body;
-    
+
+    let { titleHid, creatorHid, categoriesHid, sourceHid } = req.body;
+
     let searchSQL = 'SELECT * FROM savedIdeas WHERE source_URL=$1'
     let searchVal = [sourceHid];
 
-    client.query(searchSQL, searchVal).then((searchResult)=> {
-        if(searchResult.rows.length === 0){
+    client.query(searchSQL, searchVal).then((searchResult) => {
+        if (searchResult.rows.length === 0) {
             console.log('hi')
-            let SQL ='INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
-            let safeValues=[ titleHid, creatorHid, categoriesHid, sourceHid];
-            return client.query(SQL,safeValues)
-            .then(()=>{
-                res.status(200).json({status: 'done'});
-            })
-            
+            let SQL = 'INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
+            let safeValues = [titleHid, creatorHid, categoriesHid, sourceHid];
+            return client.query(SQL, safeValues)
+                .then(() => {
+                    res.status(200).json({ status: 'done' });
+           
+                })
+
         } else {
-            res.status(200).json({status: 'done'});
+            res.status(200).json({ status: 'done' });
+           
         }
     })
 
@@ -117,9 +122,10 @@ app.post('/search/add',(req,res)=>{
 
 })
 
-//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////home page/////////////////////////////////////////////////////
 app.get('/', topten);
 function topten(req, res) {
+
     let topArray = [];
     let key = process.env.PIXABAY_API_KEY;
     let pixUrl = `https://pixabay.com/api/?key=${key}&q=design`;
@@ -149,12 +155,50 @@ function topten(req, res) {
                     let final = sortUnsData.slice(0, 6)
                     final.forEach((item) => topArray.push(item))
                     return topArray;
+
                 }).then((topArray) => {
                     res.render('pages/index', { photos: topArray })
                 }).catch(error => {
                     res.render('pages/error');
                 });
         })
+}
+/////////////////////saved ideas from home page////////////////////////////////////////////////////
+
+app.post('/', saveidea);
+function saveidea(req, res) {
+    let title = req.body.title;
+    let creator_name = req.body.creator_name;
+    let categories = req.body.categories;
+    let source_URL = req.body.source_URL;
+
+    let SQLmainsearch = 'SELECT * FROM savedIdeas WHERE source_URL=$1 ;';
+    let searchValMain = [source_URL];
+    client.query(SQLmainsearch, searchValMain)
+        .then((mainResult) => {
+            if (mainResult.rows.length === 0) {
+                let SQL = 'INSERT INTO savedIdeas (title,creator_name,categories,source_URL) VALUES ($1,$2,$3,$4);';
+                let saveValues = [title, creator_name, categories, source_URL];
+                return client.query(SQL, saveValues)
+                    .then(() => {
+                        res.status(200).json({ status: 'done' });
+                        // res.redirect('/saved');
+                    })
+            } else {
+                res.status(200).json({ status: 'done' });
+             
+            }
+
+        })
+}
+
+app.get('/saved', save);
+function save(req, res) {
+    let SQL = 'SELECT * FROM savedIdeas;';
+    client.query(SQL)
+        .then(result => {
+            res.render('pages/saved', { data: result.rows });
+        });
 }
 
 ///////////////////constructor/////////////////////////////////////////////////////
@@ -170,13 +214,11 @@ function Photos(data) {
 function Ideas(item) {
     this.title = item.tags[1].title
     this.creator_name = item.user.name;
-    this.categories = (item.type? item.type : 'photo');
-    this.source_URL = (item.user.portfolio_url ? item.user.portfolio_url: item.urls.full);
+    this.categories = (item.type ? item.type : 'photo');
+    this.source_URL = (item.user.portfolio_url ? item.user.portfolio_url : item.urls.full);
     this.likes = item.likes;
     this.img_url = item.urls.full;
 }
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
