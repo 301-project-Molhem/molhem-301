@@ -109,10 +109,12 @@ app.post('/search/add', (req, res) => {
             return client.query(SQL, safeValues)
                 .then(() => {
                     res.status(200).json({ status: 'done' });
+           
                 })
 
         } else {
             res.status(200).json({ status: 'done' });
+           
         }
     })
 
@@ -179,15 +181,15 @@ function saveidea(req, res) {
                 let saveValues = [title, creator_name, categories, source_URL];
                 return client.query(SQL, saveValues)
                     .then(() => {
-
-                        res.redirect('/saved');
+                        res.status(200).json({ status: 'done' });
+                        // res.redirect('/saved');
                     })
             } else {
-                res.redirect('/saved');
+                res.status(200).json({ status: 'done' });
+             
             }
 
         })
-
 }
 
 app.get('/saved', save);
