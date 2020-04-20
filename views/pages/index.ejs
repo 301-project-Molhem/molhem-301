@@ -2,40 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('../../layout/head')%>
     <title>Home Page</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/base.css">
+
+
 </head>
 
 <body>
     <header>
-        <ul>
-            <li><a href="index.ejs"><img src="./resources/logo.png" alt="Molhem logo"></a></li>
-            <nav>
-                <li><a href="index.ejs">Home</a></li>
-                <li><a href="search.ejs">Search</a></li>
-                <li><a href="saved.ejs">Saved ideas</a></li>
-                <li><a href="">Ideas Board</a></li>
-                <li><a href="about.html">About us</a></li>
-            </nav>
-            <button id="hamburgerBtn"><img src="./resources/menuIcon.png" alt="menu icon"></button>
-        </ul>
-        <!-- Hamburger Menu For the mobile view -->
-        <div id="hamburgerMenu">
-            <ul>
-                <nav>
-                    <li><a href="index.ejs">Home</a></li>
-                    <li><a href="search.ejs">Search</a></li>
-                    <li><a href="saved.ejs">Saved ideas</a></li>
-                    <li><a href="">Ideas Board</a></li>
-                    <li><a href="about.html">About us</a></li>
-                </nav>
-            </ul>
+        <%-include('../../layout/header')%>
+        
+     <!--  -->
+     <div id=container>
+        Out of Creative fuel? 
+        <div id=flip>
+          <div><div> Molhem</div></div>
+          <div><div> Molhem</div></div>
+          <div><div> Molhem</div></div>
         </div>
+        is here to inspire you!
+      </div>
+  
 
-        <h1>Out of Creative fuel?<span> Molhem </span>is here to inspire you!</h1>
+    
+     <!--  -->
+
+        <!-- <h1>Out of Creative fuel?<span> Molhem </span>is here to inspire you!</h1> -->
         <a href="#mainID" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
 
     </header>
@@ -124,6 +116,7 @@
 
 
 
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
@@ -158,6 +151,7 @@
 
         })
     </script>
+
 
 </body>
 
