@@ -2,38 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
     <title>Search</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/base.css">
+    <%-include('../../layout/head')%>
 </head>
 
 <body>
     <header>
-        <ul>
-            <li><a href="index.ejs"><img src="./resources/logo.png" alt="Molhem logo"></a></li>
-            <nav>
-                <li><a href="">Home</a></li>
-                <li><a href="">Search</a></li>
-                <li><a href="">Saved ideas</a></li>
-                <li><a href="">Ideas Board</a></li>
-                <li><a href="">About us</a></li>
-            </nav>
-            <button id="hamburgerBtn"><img src="./resources/menuIcon.png" alt="menu icon"></button>
-        </ul>
-        <!-- Hamburger Menu For the mobile view -->
-        <div id="hamburgerMenu">
-            <ul>
-                <nav>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Search</a></li>
-                    <li><a href="">Saved ideas</a></li>
-                    <li><a href="">Ideas Board</a></li>
-                    <li><a href="">About us</a></li>
-                </nav>
-            </ul>
-        </div>
+        <%-include('../../layout/header')%>
         <h1>Start searching for new ideas!</h1>
         <a href="#mainIDSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
     </header>
