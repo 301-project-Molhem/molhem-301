@@ -124,6 +124,24 @@ app.post('/search/add', (req, res) => {
 
 /*******************************************update******************************************** */
 
+app.put('/saved/update', updateSaved);
+
+function updateSaved(req, res) {
+    console.log('Hi', req.body.scoreEdit)
+    let {titleEdit, categEdit, scoreEdit, noteEdit, itemID} = req.body;
+    let sqlUpdate = 'UPDATE savedIdeas SET title=$1, categories=$2, scoreOfTen=$3, notes=$4 WHERE id=$5';
+    let updateVal = [titleEdit, categEdit, scoreEdit, noteEdit, itemID];
+    client.query(sqlUpdate, updateVal).then((updateRes)=> {
+        let updatedNoteAndScore = 'SELECT notes, scoreOfTen FROM savedIdeas WHERE id=$1'
+        let noteAndScoreVal = [itemID]
+        client.query(updatedNoteAndScore, noteAndScoreVal).then((noteAndScoreRes)=> {
+            console.log('hey', noteAndScoreRes.rows[0].scoreoften);
+            res.redirect('/saved');
+        })
+
+    })
+}
+
 
 
 
@@ -203,9 +221,11 @@ function save(req, res) {
     let SQL = 'SELECT * FROM savedIdeas;';
     client.query(SQL)
         .then(result => {
-            res.render('pages/saved', { data: result.rows });
+            res.render('pages/saved', { data: result.rows});
         });
 }
+
+
 
 ///////////////////constructor/////////////////////////////////////////////////////
 function Photos(data) {

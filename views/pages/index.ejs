@@ -138,7 +138,8 @@
                     title: $(this).next('#top12Div').find('h2').text(),
                     creator_name: $(this).next('#top12Div').find('h3').text(),
                     categories: $(this).next('#top12Div').find('h4').text(),
-                    source_URL: $(this).next('#top12Div').find('h5 a').text()
+                    source_URL: $(this).next('#top12Div').find('h5 a').text(),
+                    img_url: $(this).next('#top12Div').find('img').attr('src')
                 }
                 $.ajax({
                     type: "POST",
