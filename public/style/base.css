@@ -218,6 +218,50 @@ form button{
     height: 7vh;
 }
 
+/*result page*/
+
+#resultDiv{
+
+    margin:0px;
+    font-family:'Roboto';
+    text-align:center;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 4fr);
+    grid-template-rows: repeat(8, 5vw);
+    grid-gap: 5px;
+}
+
+#resultDiv img{
+    height: 300px;
+    width: 300px;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    box-shadow: 0px 0px 40px 40px #000000;
+
+    
+}
+
+#resultDiv div {
+     padding: 45px;
+     margin-left: 15px;
+     display: grid;
+     grid-template-columns: repeat(2, 4fr);
+     grid-template-rows: repeat(8, 5vw);
+     grid-gap: 5px;
+}
+#resultDiv div h2 , #resultDiv div h3 ,#resultDiv div h4 ,#resultDiv div h5 ,#resultDiv div h6  {
+    clear: both;
+    text-align: center;
+    margin-left: 14vw;
+}
+
+#resultDiv div h2 span, #resultDiv div h3 span,#resultDiv div h4 span,#resultDiv div h5 span,#resultDiv div h6 span {
+    font-size: x-large;
+}
+
 /***************************************/
 @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
