@@ -20,7 +20,7 @@
             <div>
                 <section>
                     <!-- <img src="<%=item.img_url%>"> -->
-                    <object data="<%=item.img_url%>" type=""></object>
+                    <!-- <object data="<%=item.img_url%>" type=""></object>
                     <div>
                         <h2>Title:<%= item.title %></h2>
                         <h3>Creator:<%= item.creator_name%></h3>
@@ -29,6 +29,23 @@
                         <h6>likes: <%= item.likes%></h6>
                         <p>Notes: <%=item.notes%></p>
                         <p>Score: <%=item.scoreoften%></p>
+                    </div> -->
+                    <div class="flip-box">
+                        <div class="flip-box-inner">
+                            <div class="flip-box-front">
+                                <object data="<%=item.img_url%>" type=""></object>
+                            </div>
+                            <div class="flip-box-back">
+                                <h2>Title:<%= item.title %></h2>
+                                <h3>Creator:<%= item.creator_name%></h3>
+                                <h4>Categories:<%= item.categories%></h4>
+                                <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
+                                <h6>likes: <%= item.likes%></h6>
+                                <p>Notes: <%=item.notes%></p>
+                                <p>Score: <%=item.scoreoften%></p>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
                 <form action="/saved/delete?_method=delete" method="POST">
@@ -82,6 +99,7 @@
             })
         })
     </script>
+
 </body>
 
 </html>
