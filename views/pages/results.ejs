@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
     <title>Search</title>
     <%-include('../layout/head')%>
 </head>
@@ -38,27 +38,27 @@
         </section>
 
         <section id="results">
-        
 
-          
 
-                <%keyPhoto.forEach((item, idx) =>{%>
-                <section>
-                    <button class="btn">Add item<%=idx%></button>
-                    <div id="resultDiv">
-                        <img src="<%=item.img_url%>">
-                        <div id="resultDiv2">
-                            <h2> <span> Title:</span> <%= item.title %></h2>
-                            <h3> <span>  Creator:</span><%= item.creator_name%></h3>
-                            <h4> <span>Categories: </span> <%= item.categories%></h4>
-                            <h5> <span> Source:</span>  <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
-                            <h6> <span>likes: </span>  <%= item.likes%></h6>
-                        </div>
+
+
+            <%keyPhoto.forEach((item, idx) =>{%>
+            <section>
+                <button class="btn">Add item<%=idx%></button>
+                <div id="resultDiv">
+                    <img src="<%=item.img_url%>">
+                    <div id="resultDiv2">
+                        <h2> <span> Title:</span> <%= item.title %></h2>
+                        <h3> <span> Creator:</span><%= item.creator_name%></h3>
+                        <h4> <span>Categories: </span> <%= item.categories%></h4>
+                        <h5> <span> Source:</span> <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
+                        <h6> <span>likes: </span> <%= item.likes%></h6>
                     </div>
+                </div>
 
-                </section>
-                <% }) %>
-       
+            </section>
+            <% }) %>
+
 
         </section>
 
@@ -66,13 +66,21 @@
     </main>
 
     <footer>
-       
+
         <%-include('../layout/footer')%>
     </footer>
     <%-include('../layout/script')%>
     <script>
         $(document).ready(() => {
-            $('.btn').on( 'click', function (event) {
+
+            $('#hamburgerMenu').hide();
+
+            $('#hamburgerBtn').on('click', () => {
+                $('#hamburgerMenu').toggle();
+            })
+
+
+            $('.btn').on('click', function (event) {
                 event.preventDefault();
                 const data = {
                     titleHid: $(this).next('#resultDiv').find('h2').text(),
@@ -83,7 +91,7 @@
                     likesHid: $(this).next('#resultDiv').find('h6').text()
                 }
 
-                
+
                 $.ajax({
                     type: "POST",
                     url: 'http://localhost:5000/search/add',
@@ -102,7 +110,8 @@
     </script>
 
 
-   
+
 
 </body>
+
 </html>
