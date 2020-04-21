@@ -46,20 +46,19 @@
                 <section>
                     <button class="btn">Add item<%=idx%></button>
                     <div id="resultDiv">
-                        <img src="<%=item.img_url%>">
-                        <div id="resultDiv2">
-                            <h2> <span> Title:</span> <%= item.title %></h2>
-                            <h3> <span>  Creator:</span><%= item.creator_name%></h3>
-                            <h4> <span>Categories: </span> <%= item.categories%></h4>
-                            <h5> <span> Source:</span>  <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
-                            <h6> <span>likes: </span>  <%= item.likes%></h6>
+                        <!-- <img src="<%=item.img_url%>"> -->
+                        <object data="<%=item.img_url%>" type=""></object>
+                        <div>
+                            <h2>Title:<%= item.title %></h2>
+                            <h3>Creator:<%= item.creator_name%></h3>
+                            <h4>Categories:<%= item.categories%></h4>
+                            <h5>Source: <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
+                            <h6>likes: <%= item.likes%></h6>
                         </div>
                     </div>
 
                 </section>
                 <% }) %>
-       
-
         </section>
 
 
@@ -79,7 +78,7 @@
                     creatorHid: $(this).next('#resultDiv').find('h3').text(),
                     categoriesHid: $(this).next('#resultDiv').find('h4').text(),
                     sourceHid: $(this).next('#resultDiv').find('h5 a').text(),
-                    imgHid: $(this).next('#resultDiv').find('img').attr('src'),
+                    imgHid: $(this).next('#resultDiv').find('object').attr('data'),
                     likesHid: $(this).next('#resultDiv').find('h6').text()
                 }
 
