@@ -4,12 +4,12 @@
 <head>
   
     <title>Search</title>
-    <%-include('../../layout/head')%>
+    <%-include('../layout/head')%>
 </head>
 
 <body>
     <header>
-        <%-include('../../layout/header')%>
+        <%-include('../layout/header')%>
         <h1>Start searching for new ideas!</h1>
         <a href="#mainIDSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
     </header>
@@ -38,11 +38,9 @@
         </section>
 
         <section id="results">
-            <div id="dribbleResults">
+        
 
-            </div>
-
-            <div id="pixabayResults">
+          
 
                 <%keyPhoto.forEach((item, idx) =>{%>
                 <section>
@@ -61,20 +59,16 @@
 
                 </section>
                 <% }) %>
-            </div>
         </section>
 
 
     </main>
 
     <footer>
-        <p>All Rights Reserved @2020</p>
-
+       
+        <%-include('../layout/footer')%>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
-    <script src="js/app.js"></script>
+    <%-include('../layout/script')%>
     <script>
         $(document).ready(() => {
             $('.btn').on( 'click', function (event) {
