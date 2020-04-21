@@ -17,27 +17,26 @@
         <h1>Saved Ideas</h1>
         <section id="topPicks">
             <%data.forEach(item =>{%>
-            <section>
-                <!-- <img src="<%=item.img_url%>"> -->
-                <object data="<%=item.img_url%>" type=""></object>
-                <div>
-                    <h2>Title:<%= item.title %></h2>
-                    <h3>Creator:<%= item.creator_name%></h3>
-                    <h4>Categories:<%= item.categories%></h4>
-                    <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
-                    <h6>likes: <%= item.likes%></h6>
-                    <p>Notes: <%=item.notes%></p>
-                    <p>Score: <%=item.scoreoften%></p>
-                </div>
-
-            </section>
-            <form action="/saved/delete?_method=delete" method="POST">
-                <button type="submit">Delete</button>
-                <input type="hidden" value="<%=item.id%>" name="itemID">
-            </form>
-            <button class="editBtn">Edit</button>
-            <section class="updateForm">
-              
+            <div>
+                <section>
+                    <!-- <img src="<%=item.img_url%>"> -->
+                    <object data="<%=item.img_url%>" type=""></object>
+                    <div>
+                        <h2>Title:<%= item.title %></h2>
+                        <h3>Creator:<%= item.creator_name%></h3>
+                        <h4>Categories:<%= item.categories%></h4>
+                        <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
+                        <h6>likes: <%= item.likes%></h6>
+                        <p>Notes: <%=item.notes%></p>
+                        <p>Score: <%=item.scoreoften%></p>
+                    </div>
+                </section>
+                <form action="/saved/delete?_method=delete" method="POST">
+                    <button type="submit">Delete</button>
+                    <input type="hidden" value="<%=item.id%>" name="itemID">
+                </form>
+                <button class="editBtn">Edit</button>
+                <section class="updateForm">
                     <form action="/saved/update?_method=put" method="POST" class="editForm">
                         <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
                         <label for="titleEdit">
@@ -64,7 +63,7 @@
                         <button id="confirmBtn">Confirm Edits</button>
                     </form>
                 </section>
-           
+            </div>
             <% }) %>
         </section>
     </main>
@@ -78,7 +77,7 @@
     <script>
         $(document).ready(function () {
             $('.updateForm').hide();
-            $('.editBtn').on('click', function (){
+            $('.editBtn').on('click', function () {
                 $(this).next('.updateForm').toggle();
             })
         })

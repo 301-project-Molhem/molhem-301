@@ -629,16 +629,64 @@ header {
 #topPicks section object{
     width: 28vw;
     margin: 1vw;
-    border: 1px black solid;
-    height: 50vh;
 }
-
 #topPicks button{
-    width: 90vw;
+    width: 30vw;
     display: flex;
     flex-direction: column;
     margin: 1vw;
     border: 1px black solid;
 }
-
+#button{
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    margin: 5vw;
+    border: 1px black solid;
+}
+.formButton{
+    width: 20vw;
+    text-align: center;
+    margin: 0 auto;
+}
+.editBtn{
+    font-size: 1em;
+    border-radius: 15px;
+    width: 60vw;
+    height: 7vh;
+    margin: 5% 20%;
+}
+.updateForm{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+}
+.updateForm textarea{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+}
+form input[type = text] {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+}
+.updateForm select{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+    margin-bottom: 2%;
+}
+.topPicks div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-evenly;
+}
 }
