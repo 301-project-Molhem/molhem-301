@@ -85,6 +85,17 @@ header span {
     text-align: center;
 }
 
+#topPicks section div h2 ,#topPicks section div h3 ,#topPicks section div h4 ,#topPicks section div h5 ,#topPicks section div h6 {
+    display: grid;
+    grid-template-columns: 1fr;
+} 
+
+#topPicks section, #toSaved section {
+    width: 90vw;
+    margin: 1vw;
+    box-shadow: 0px 2px 2px 2px #00000099;
+    border: 1px #00000066 solid;
+}
 #topPicks section, #toSaved section {
     width: 90vw;
     display: flex;
@@ -96,22 +107,40 @@ header span {
 #addIcon {
     display: none;
 }
+#topPicks {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-evenly;
+}
 
+.btnMain {
+    background-color: #DC143C;
+    color: white;
+    height: 10vh;
+    width: 90vw;
+    font-size: x-large;
+}
 #topPicks section:hover {
     opacity: 50%;
 }
 
 #topPicks section img, #toSaved section img {
-    width: 80vw;
-    margin: 4vw;
+    height: 61.5vh;
+    width: 90vw;
+    margin-top: -17.5vh;
+    margin-right: 31vw;
+    margin-left: -10vw;
+    box-shadow: 0px 0px 60px -11px #00121b;
 }
 
 #topPicks section div, #toSaved section div {
     padding: 5vw 2vw;
+    
 }
 
 #topPicks section div>*, #toSaved section div>* {
-    padding-bottom: 1.5vh;
+    padding: 0.1vh;
     text-align: center;
 }
 
@@ -129,6 +158,16 @@ header span {
 #topPicks section div p, #toSaved section div p {
     font-size: 0.8em;
     text-align: center;
+}
+
+.containForm {
+    font-size: x-large;
+}
+
+.nameForm {
+    font-size: x-large;
+    font-weight: bold;
+    padding: 1.8vh
 }
 
 #toSearch div {
@@ -174,16 +213,6 @@ header span {
     height: 5vh;
 }
 
-footer {
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #f5f5f5;
-    background-color: rgb(0, 0, 0);
-}
-
 
 /* search page */
 
@@ -218,6 +247,70 @@ form button{
     height: 7vh;
     margin-bottom: 2%;
 }
+
+
+.flip-box {
+    background-color: transparent;
+    width: 400px;
+    height: 250px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; 
+     margin-left: 30px;
+    margin-top: 100px;
+    margin-bottom: 50px;  
+    display:inline-block;
+  }
+  
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+ 
+  .flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+  }
+  
+ 
+
+  /* .flip-box-back section div h2 ,.flip-box-back section div h3 ,.flip-box-back section div h4 ,.flip-box-back section div h5 ,.flip-box-back section div     h6 {
+    margin-top: 5vh;    
+    padding: 5vh;
+  } */
+  #containForm{
+    font-size: xx-small;
+      
+  }
+ 
+  .flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+  }
+  
+ 
+  .flip-box-front {
+ 
+    color: black;
+    
+  }
+  
+ 
+  .flip-box-back {
+    transform: rotateY(180deg);
+    height: 61.5vh;
+    width: 90vw;
+    margin-top: -14.5vh;
+    /* margin-right: 31vw; */
+    margin-left: 13vw;  
+  }
 
 /******************result page***********************/
 
@@ -376,23 +469,36 @@ header {
         width: 100vw;
         justify-content: space-evenly;
     }
+    .btnMain{
+        background-color: #DC143C;
+        color:white;
+        height: 10vh;
+        width: 30vw;
+font-size: x-large;
+    }
     #topPicks section, #toSaved section {
         width: 30vw;
+        height: 65vh;
         margin: 1vw;
-        border: 1px black solid;
+        box-shadow: 0px 2px 2px 2px #00000099;
+        border: 1px #00000066 solid;
     }
     #topPicks section:hover {
         opacity: 50%;
     }
     #topPicks section img, #toSaved section img {
         width: 30vw;
-        margin: 0px;
+        margin: -8vh;
+        margin-top: -23vh;
+        margin-right: 5vh;
+        box-shadow: 0px 0px 60px -11px black;
+        height: 60vh;
     }
     #topPicks section div, #toSaved section div {
         padding: 3vw 1vw;
     }
     #topPicks section div>*, #toSaved section div>* {
-        padding-bottom: 1.5vh;
+        padding: 0.1vh;
         text-align: center;
     }
     #topPicks section div h2, #toSaved section div h2 {
@@ -407,6 +513,21 @@ header {
     #topPicks section div p, #toSaved section div p {
         font-size: 0.8em;
         text-align: center;
+    }
+
+    #topPicks section div h2 ,#topPicks section div h3 ,#topPicks section div h4 ,#topPicks section div h5 ,#topPicks section div h6 {
+        display: grid;
+        grid-template-columns: 1fr;
+    } 
+    #containForm{
+        font-size: xx-small;
+    }
+    .containForm{
+        font-size: x-large;
+    }
+    .nameForm{
+        font-size: x-large;
+        font-weight: bold;
     }
     #toSearch div {
         height: 80vh;
@@ -442,6 +563,65 @@ header {
         padding: 0px;
         margin: 0px;
     }
+
+    .flip-box {
+        background-color: transparent;
+        width: 400px;
+        height: 250px;
+        border: 1px solid #f1f1f1;
+        perspective: 1000px; 
+         margin-left: 30px;
+        /* margin-right: 20px;*/
+        margin-top: 100px;
+        margin-bottom: 50px;  
+        display:inline-block;
+      }
+      
+      
+      .flip-box-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+     
+      .flip-box:hover .flip-box-inner {
+        transform: rotateY(180deg);
+      }
+      
+     
+    
+      .flip-box-back section div h2 ,.flip-box-back section div h3 ,.flip-box-back section div h4 ,.flip-box-back section div h5 ,.flip-box-back section div h6 {
+        margin-top: 5vh;
+        padding: 5vh;
+      }
+     
+      .flip-box-front, .flip-box-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; 
+        backface-visibility: hidden;
+      }
+      
+     
+      .flip-box-front {
+     
+        color: black;
+        
+      }
+      
+     
+      .flip-box-back {
+        width: 30vw; 
+        transform: rotateY(180deg);
+        margin-top: -20vh;
+        margin-left: 2vw;
+        
+      }
     /* footer {
         width: 100%;
         height: 10vh;
@@ -567,126 +747,4 @@ header {
 }
 
 
-/* for tablet mode view */
 
- @media screen and (max-width: 1275px) {
-	.footer-items {
-		width: 50%;
-	}
-} 
-
-/* for mobile screen view */
-
- @media screen and (max-width: 660px) {
-	.footer-items {
-		width: 100%;
-	}
-}
-/* saved */
-#topPicks section object{
-    width: 90vw;
-    height: 30vh;
-}
-#button{
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
-    margin: 5vw;
-    border: 1px black solid;
-}
-.formButton{
-    width: 20vw;
-    text-align: center;
-    margin: 0 auto;
-}
-.editBtn{
-    font-size: 1em;
-    border-radius: 15px;
-    width: 60vw;
-    height: 7vh;
-    margin: 5% 20%;
-}
-.updateForm{
-    text-align: center;
-    margin: 0 auto;
-}
-.updateForm textarea{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-    border-radius: 15px;
-    width: 80vw;
-}
-.updateForm select{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-    border-radius: 15px;
-    width: 80vw;
-    margin-bottom: 2%;
-}
-@media (min-width: 1025px) {
-#topPicks section object{
-    width: 28vw;
-    margin: 1vw;
-}
-#topPicks button{
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    margin: 1vw;
-    border: 1px black solid;
-}
-#button{
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
-    margin: 5vw;
-    border: 1px black solid;
-}
-.formButton{
-    width: 20vw;
-    text-align: center;
-    margin: 0 auto;
-}
-.editBtn{
-    font-size: 1em;
-    border-radius: 15px;
-    width: 60vw;
-    height: 7vh;
-    margin: 5% 20%;
-}
-.updateForm{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-}
-.updateForm textarea{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-    border-radius: 15px;
-    width: 28vw;
-}
-form input[type = text] {
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-    border-radius: 15px;
-    width: 28vw;
-}
-.updateForm select{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1em;
-    border-radius: 15px;
-    width: 28vw;
-    margin-bottom: 2%;
-}
-.topPicks div {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vw;
-    justify-content: space-evenly;
-}
-}
