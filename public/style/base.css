@@ -629,6 +629,7 @@ header {
 #topPicks section object{
     width: 28vw;
     margin: 1vw;
+    /* height: 45vh; */
 }
 #topPicks button{
     width: 30vw;
@@ -653,7 +654,7 @@ header {
     font-size: 1em;
     border-radius: 15px;
     width: 60vw;
-    height: 7vh;
+    /* height: 7vh; */
     margin: 5% 20%;
 }
 .updateForm{
