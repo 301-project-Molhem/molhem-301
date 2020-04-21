@@ -218,6 +218,58 @@ form button{
     height: 7vh;
 }
 
+/******************result page***********************/
+
+#results{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+/* justify-content: center; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+    /* grid-gap: 5px; */
+
+
+#resultDiv{
+
+    margin:0px;
+    font-family:'Roboto';
+    text-align:center;
+    height: 500px;
+    width: 500px;
+ 
+}
+
+
+#resultDiv img{
+    height: 300px;
+    width: 300px;
+  
+    box-shadow:2px 6px 73px 72px #0000009e;
+}
+
+
+
+#resultDiv div {
+     padding: 45px;
+     margin-left: 15px;
+  
+}
+#resultDiv div h2 , #resultDiv div h3 ,#resultDiv div h4 ,#resultDiv div h5 ,#resultDiv div h6  {
+    clear: both;
+    text-align: center;
+    margin-left: 14vw;
+}
+
+#resultDiv div h2 span, #resultDiv div h3 span,#resultDiv div h4 span,#resultDiv div h5 span,#resultDiv div h6 span {
+    font-size: x-large;
+}
+/*****************************************/
+
 /***************************************/
 @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
@@ -502,7 +554,14 @@ header {
         text-align: center;
     }
 
-    
+ /******************result page******/
+ #results{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100vw;
+    justify-content: space-evenly;
+}   
 
 }
 
