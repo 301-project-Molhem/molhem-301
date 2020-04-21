@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <title>Document</title>
 
     <%-include('../layout/head')%>
@@ -17,68 +17,68 @@
         <h1>Saved Ideas</h1>
         <section id="topPicks">
             <%data.forEach(item =>{%>
-            <section>
-                <img src="<%=item.img_url%>">
-                <div>
-                    <h2>Title:<%= item.title %></h2>
-                    <h3>Creator:<%= item.creator_name%></h3>
-                    <h4>Categories:<%= item.categories%></h4>
-                    <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
-                    <h6>likes: <%= item.likes%></h6>
-                    <p>Notes: <%=item.notes%></p>
-                    <p>Score: <%=item.scoreoften%></p>
-                </div>
-
-            </section>
-            <form action="/saved/delete?_method=delete" method="POST">
-                <button type="submit">Delete</button>
-                <input type="hidden" value="<%=item.id%>" name="itemID">
-            </form>
-            
-            <button class="editBtn">Edit</button>
-            <section>
-                <form action="/saved/update?_method=put" method="POST" class="editForm">
-                    <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
-                    <label for="titleEdit">
-                        <input type="text" value="<%= item.title %>" name="titleEdit">
-                    </label>
-                    <label for="categEdit">
-                        <input type="text" value="<%= item.categories%>" name="categEdit">
-                    </label>
-                    <input type="hidden" value="<%= item.creator_name%>" name="creatorEdit">
-                    <input type="hidden" value="<%=item.source_url%>" name="imgSrcEdit">
-                    <input type="hidden" value="<%= item.likes%>" name="likesEdit">
-                    <label for="noteEdit">
-                        <textarea name="noteEdit" id="" cols="30" rows="10"
-                            placeholder="Write any note about this idea"></textarea>
-                    </label>
+            <div>
+                <section>
+                    <!-- <img src="<%=item.img_url%>"> -->
+                    <object data="<%=item.img_url%>" type=""></object>
+                    <div>
+                        <h2>Title:<%= item.title %></h2>
+                        <h3>Creator:<%= item.creator_name%></h3>
+                        <h4>Categories:<%= item.categories%></h4>
+                        <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
+                        <h6>likes: <%= item.likes%></h6>
+                        <p>Notes: <%=item.notes%></p>
+                        <p>Score: <%=item.scoreoften%></p>
+                    </div>
+                </section>
+                <form action="/saved/delete?_method=delete" method="POST">
+                    <button type="submit">Delete</button>
                     <input type="hidden" value="<%=item.id%>" name="itemID">
-
-                    <select name="scoreEdit">
-                        <option name="scoreEdit" value="1">1</option>
-                        <option name="scoreEdit" value="2">2</option>
-                        <option name="scoreEdit" value="3">3</option>
-                        <option name="scoreEdit" value="4">4</option>
-                        <option name="scoreEdit" value="5">5</option>
-                    </select>
-                    <button id="confirmBtn">Confirm Edits</button>
                 </form>
-            </section>
+                <button class="editBtn">Edit</button>
+                <section class="updateForm">
+                    <form action="/saved/update?_method=put" method="POST" class="editForm">
+                        <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
+                        <label for="titleEdit">
+                            <input type="text" value="<%= item.title %>" name="titleEdit">
+                        </label>
+                        <label for="categEdit">
+                            <input type="text" value="<%= item.categories%>" name="categEdit">
+                        </label>
+                        <input type="hidden" value="<%= item.creator_name%>" name="creatorEdit">
+                        <input type="hidden" value="<%=item.source_url%>" name="imgSrcEdit">
+                        <input type="hidden" value="<%= item.likes%>" name="likesEdit">
+                        <label for="noteEdit">
+                            <textarea name="noteEdit" id="" cols="30" rows="10"
+                                placeholder="Write any note about this idea"></textarea>
+                        </label>
+                        <input type="hidden" value="<%=item.id%>" name="itemID">
+                        <select name="scoreEdit">
+                            <option name="scoreEdit" value="1">1</option>
+                            <option name="scoreEdit" value="2">2</option>
+                            <option name="scoreEdit" value="3">3</option>
+                            <option name="scoreEdit" value="4">4</option>
+                            <option name="scoreEdit" value="5">5</option>
+                        </select>
+                        <button id="confirmBtn">Confirm Edits</button>
+                    </form>
+                </section>
+            </div>
             <% }) %>
         </section>
     </main>
-    <footer>
+    <!-- <footer>
         <%-include('../layout/footer')%>
-             </footer>
+    </footer> -->
 
-             <%-include('../layout/script')%>
+    <%-include('../layout/script')%>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $('.editForm').hide();
+            $('.updateForm').hide();
             $('.editBtn').on('click', function () {
-                $(this).next('section').find('.editForm').toggle();
+                $(this).next('.updateForm').toggle();
             })
         })
     </script>
