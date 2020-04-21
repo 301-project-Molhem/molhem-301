@@ -48,7 +48,8 @@
                 <section>
                     <button class="btn">Add item<%=idx%></button>
                     <div id="resultDiv">
-                        <img src="<%=item.img_url%>">
+                        <!-- <img src="<%=item.img_url%>"> -->
+                        <object data="<%=item.img_url%>" type=""></object>
                         <div>
                             <h2>Title:<%= item.title %></h2>
                             <h3>Creator:<%= item.creator_name%></h3>
@@ -61,7 +62,6 @@
                 </section>
                 <% }) %>
             </div>
-
         </section>
 
 
@@ -84,14 +84,14 @@
                     creatorHid: $(this).next('#resultDiv').find('h3').text(),
                     categoriesHid: $(this).next('#resultDiv').find('h4').text(),
                     sourceHid: $(this).next('#resultDiv').find('h5 a').text(),
-                    imgHid: $(this).next('#resultDiv').find('img').attr('src'),
+                    imgHid: $(this).next('#resultDiv').find('object').attr('data'),
                     likesHid: $(this).next('#resultDiv').find('h6').text()
                 }
 
                 
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:8000/search/add',
+                    url: 'http://localhost:5000/search/add',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {

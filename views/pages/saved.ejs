@@ -14,7 +14,8 @@
         <section id="topPicks">
             <%data.forEach(item =>{%>
             <section>
-                <img src="<%=item.img_url%>">
+                <!-- <img src="<%=item.img_url%>"> -->
+                <object data="<%=item.img_url%>" type=""></object>
                 <div>
                     <h2>Title:<%= item.title %></h2>
                     <h3>Creator:<%= item.creator_name%></h3>
