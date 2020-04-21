@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <%-include('../layout/head')%>
+    <%-include('../../layout/head')%>
     <title>Home Page</title>
 
 
@@ -10,22 +10,28 @@
 
 <body>
     <header>
-        <%-include('../layout/header')%>
-        
-     <!--  -->
-     <div id=container>
-        Out of Creative fuel? 
-        <div id=flip>
-          <div><div> Molhem</div></div>
-          <div><div> Molhem</div></div>
-          <div><div> Molhem</div></div>
-        </div>
-        is here to inspire you!
-      </div>
-  
+        <%-include('../../layout/header')%>
 
-    
-     <!--  -->
+        <!--  -->
+        <div id=container>
+            Out of Creative fuel?
+            <div id=flip>
+                <div>
+                    <div> Molhem</div>
+                </div>
+                <div>
+                    <div> Molhem</div>
+                </div>
+                <div>
+                    <div> Molhem</div>
+                </div>
+            </div>
+            is here to inspire you!
+        </div>
+
+
+
+        <!--  -->
 
         <!-- <h1>Out of Creative fuel?<span> Molhem </span>is here to inspire you!</h1> -->
         <a href="#mainID" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
@@ -39,13 +45,34 @@
             <section>
                 <button class="btnMain">save idea</button>
                 <div id="top12Div">
-                    <img src="<%=item.img_url%>">
+                    <!-- <img src="<%=item.img_url%>">
                     <div>
-                        <h2>Title:<%= item.title %></h2>
-                        <h3>Creator:<%= item.creator_name%></h3>
-                        <h4>Categories:<%= item.categories%></h4>
-                        <h5>Source: <a href="<%=item.source_url%>"><%=item.source_url%></a></h5>
-                        <h6>likes: <%= item.likes%></h6>
+                        <h2> <span class="nameForm">Title: </span>      <span class="containForm"> <%= item.title %> </span> </h2>
+                        <h3> <span class="nameForm">Creator: </span>    <span class="containForm"><%= item.creator_name%> </span> </h3>
+                        <h4> <span class="nameForm"> Categories:</span> <span class="containForm"><%= item.categories%> </span>  </h4>
+                        <h5> <span class="nameForm">  Source: </span>   <span id="containForm"> <a href="<%=item.source_url%>"><%=item.source_url%></a></span>  </h5>
+                        <h6> <span class="nameForm"> likes:</span>      <span class="containForm"><%= item.likes%> </span> </h6> -->
+                
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img src="<%=item.img_url%>">
+                                </div>
+                                <div class="flip-box-back">
+                                <h2> <span class="nameForm">Title: </span> <span class="containForm"> <%= item.title %>
+                                    </span> </h2>
+                                <h3> <span class="nameForm">Creator: </span> <span
+                                        class="containForm"><%= item.creator_name%> </span> </h3>
+                                <h4> <span class="nameForm"> Categories:</span> <span
+                                        class="containForm"><%= item.categories%> </span> </h4>
+                                <h5> <span class="nameForm"> Source: </span> <span id="containForm"> <a
+                                            href="<%=item.source_url%>"><%=item.source_url%></a></span> </h5>
+                                <h6> <span class="nameForm"> likes:</span> <span class="containForm"><%= item.likes%>
+                                    </span> </h6>
+                            </div>
+                           
+                        </div>
+                        <!-- </div> -->
 
                         <!-- <form action="/" method="POST" >
                     <input type="text" name="img_url" value="<%=item.img_url%>">
@@ -75,7 +102,7 @@
 
         </section>
 
-        <h1 id="toSaved1">Check Saved Ideas!</h1>
+        <!-- <h1 id="toSaved1">Check Saved Ideas!</h1>
         <section id="toSaved">
 
             <section>
@@ -106,15 +133,15 @@
                 </div>
             </section>
             <a href="">See more saved ideas</a>
-        </section>
+        </section> -->
 
     </main>
 
-    
-  <footer>
-    <%-include('../layout/footer')%>
-         </footer>
-          <%-include('../layout/script')%>
+
+    <footer>
+        <!-- <%-include('../layout/footer')%> -->
+    </footer>
+    <%-include('../layout/script')%>
     <script>
 
         $(document).ready(() => {
