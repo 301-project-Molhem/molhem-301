@@ -36,18 +36,10 @@
             <div>
 
                 <section>
-
-
-
-
-
                     <img src="<%=item.img_url%>" alt="">
                     <!-- <object data="<%=item.img_url%>" ></object> -->
                     <!-- <embed src="<%=item.img_url%>" width="300" height="200"> -->
-
-
                     <div>
-
                         <h2>Title:<%= item.title %></h2>
                         <h3>Creator:<%= item.creator_name%></h3>
                         <h4>Categories:<%= item.categories%></h4>
@@ -56,12 +48,7 @@
                         <p>Notes: <%=item.notes%></p>
                         <p>Score: <%=item.scoreoften%></p>
                     </div>
-
-
                 </section>
-
-
-
                 <form action="/saved/delete?_method=delete" method="POST">
                     <button type="submit">Delete</button>
                     <input type="hidden" value="<%=item.id%>" name="itemID">
