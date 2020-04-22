@@ -453,6 +453,16 @@ footer {
 
 /*------------------------------------------------ */
 
+
+#rightFooter ul li a {
+    color: #b25274;
+}
+
+#rightFooter ul li{
+    padding-bottom: 1vh;
+}
+
+
 /* Desktop */
 
 @media (min-width: 1025px) {
@@ -601,6 +611,11 @@ footer {
         grid-template-rows: 1fr 1fr;
         color: #7dbbb4;
         clear: both;
+    }
+    #rightFooter ul li a {
+        color: #b25274;
+        text-decoration: none;
+
     }
     #rightFooter {
         grid-row-start: 1;
