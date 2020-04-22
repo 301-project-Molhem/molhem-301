@@ -24,10 +24,9 @@ body{
 	width: 100%;
 }
 .team h1{
-	font-size: 36px;
+	font-size: 50px;
 	font-family: open sans;
 	font-weight: 700;
-	color:#ffffff;
 	margin:0;
 	padding-bottom:60px;
 	text-align: center;
@@ -60,9 +59,10 @@ body{
 	font-size: 20px;
 	font-family: open sans;
 	margin:20px 0px 10px;
-	color:#ea5e71;
+	/* columns: #76CD7F; */
 	text-align: center;
 	font-weight: 700;
+	color:#76CD7F
 }
 
 .team .card .box h5{
