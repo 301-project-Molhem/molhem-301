@@ -1,4 +1,66 @@
+#rightFooter ul li a {
+    color: #b25274;
+}
 
+#rightFooter ul li {
+	padding-bottom: 1vh;
+}
+
+
+#mainIDSearch button {
+    width: 75vw;
+    height: 8vh;
+    margin: 0px;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vw;
+    padding: 2vw;
+    margin: 5vh 0vw 0vh 0vw;
+    color: #ffffff;
+    background-color: #5c8b58;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+}
+
+#mainIDSearch form>* {
+    font-size: 1.5em;
+    margin: 5vw;
+}
+
+#mainIDSearch form legend {
+    text-align: center;
+    font-weight: bold;
+}
+
+#mainIDSearch form div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#mainIDSearch form legend {
+    font-size: 2em;
+    padding: 5vw;
+    text-align: center;
+    color: #40745c;
+    text-shadow: 4px 4px 4px rgba(178, 82, 116, 0.315);
+}
+
+#hamburgerBtn {
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#hamburgerBtn img {
+    width: 13vw;
+}
 
 * {
     font-family: 'Cormorant Garamond', serif;
@@ -33,15 +95,12 @@ header ul nav {
     display: none;
 }
 
-
-
 #hamburgerMenu ul nav {
     display: flex;
     flex-direction: column;
     align-items: left;
     width: 100vw;
-    margin-left:-5vw;
-
+    margin-left: -5vw;
     justify-content: center;
     align-items: center;
     line-height: 10vh;
@@ -83,7 +142,7 @@ header h1 {
     padding: 9.5vh 10vw 0vh 10vw;
     font-weight: bolder;
     text-transform: capitalize;
-    letter-spacing: 0.5vh;
+    letter-spacing: 0.2vh;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
@@ -162,7 +221,7 @@ header span {
     box-shadow: 4px 8px 16px 0px rgba(66, 66, 66, 0.274);
 }
 
-#results section .btn{
+#results section .btn {
     width: 90vw;
     padding: 5vw;
     font-size: 1em;
@@ -186,10 +245,6 @@ header span {
 
 #addIcon {
     display: none;
-}
-
-#results section:hover {
-    opacity: 80%;
 }
 
 #results #resultDiv img {
@@ -240,8 +295,26 @@ header span {
     overflow: hidden;
 }
 
-.front img {
+/* .front img {
     overflow: hidden;
+} */
+
+#results section:hover {
+    overflow: visible;
+    position: relative;
+    object-fit: cover;
+
+    width: 20vw;
+
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    cursor: pointer;
 }
 
 #top12Div {
@@ -375,7 +448,7 @@ footer {
     justify-content: space-around;
 }
 
-#mainIDSearch .btn{
+#mainIDSearch .btn {
     width: 80vw;
     border-radius: 2vw;
     padding: 5vw;
@@ -444,6 +517,7 @@ footer {
 /* Desktop */
 
 @media (min-width: 1025px) {
+
     header {
         height: 100vh;
         background-repeat: no-repeat;
@@ -538,7 +612,7 @@ footer {
         font-size: 0.8em;
         text-align: center;
     }
-    #results section .btn{
+    #results section .btn {
         width: 30vw;
         padding: 2vw;
         font-size: 1em;
@@ -669,7 +743,6 @@ footer {
         align-items: center;
         justify-content: center;
     }
-
     /*-----------------------------------------------------------------------------*/
     #mainIDSearch, #mainIDSearch form {
         display: flex;
@@ -694,10 +767,11 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
 .editForm input, .editForm textarea, .editForm select {
     width: 70vw;
 }
 
-.editForm .btn{
+.editForm .btn {
     padding-top: 1vh;
 }

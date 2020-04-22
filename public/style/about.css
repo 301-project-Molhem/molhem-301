@@ -1,3 +1,136 @@
+#rightFooter ul li a {
+    color: #b25274;
+}
+
+#rightFooter ul li {
+	padding-bottom: 1vh;
+}
+
+
+
+* {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../resources/mob-background.jpg');
+}
+
+header ul {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    padding: 5vw;
+}
+
+header ul li a img {
+    width: 30vw!important;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+header ul nav {
+    display: none;
+}
+
+
+
+#hamburgerMenu ul nav {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100vw;
+    margin-left:-5vw;
+
+    justify-content: center;
+    align-items: center;
+    line-height: 10vh;
+}
+
+#hamburgerMenu ul nav li {
+    margin-bottom: 5vh;
+}
+
+#hamburgerMenu ul nav li a {
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#hamburgerMenu {
+    background-color: #b25274;
+    height: 90vh;
+}
+
+#hamburgerBtn {
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#hamburgerBtn img {
+    width: 13vw;
+}
+
+
+
+h1 {
+    font-size: 2em;
+    padding: 5vw;
+    text-align: center;
+    color: #79c88d;
+}
+
+header span {
+    color: rgb(172, 172, 172);
+}
+
+.arrow {
+    display: block;
+    text-align: center;
+    padding-top: 30vh;
+}
+
+.arrow img {
+    width: 20vw;
+}
+
+.arrow:hover {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(0, -1px, 0);
+    }
+    20%, 80% {
+        transform: translate3d(0, 2px, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(0, -4px, 0);
+    }
+    40%, 60% {
+        transform: translate3d(0, 4px, 0);
+    }
+}
+
+
+
+
 /* 
 /************************************************************start about**************************/
 body{
@@ -36,12 +169,14 @@ body{
 	width:20%;
 	float: left;
 	padding:0px 15px;
+	color: #b25274;
 }
 .team .card .box {
 	padding:15px;
-	background-color: #2d3035;
+	background-image: url(../resources/desktop-background-none.jpg);
 	border-radius:5px;
 	transition: margin 1s ease,box-shadow 1s ease;
+    box-shadow: 4px 8px 16px 0px rgba(66, 66, 66, 0.274);
 }
 .team .card .box:hover{
 	margin-top:-15px;
@@ -62,19 +197,18 @@ body{
 	/* columns: #76CD7F; */
 	text-align: center;
 	font-weight: 700;
-	color:#76CD7F
+	color:#79c88d
 }
 
 .team .card .box h5{
 	font-size:16px;
 	font-family: open sans;
-	font-weight: 600;
-	color:#b9b9b9;
+	color:#b25274;
 	margin:0px 0px 15px;
 	text-align: center;
 }
 .team .card .box p{
-	color:#b9b9b9;
+	color:#b25274;
 	font-size: 15px;
 	font-family: open sans;
 	font-weight: 400;
@@ -153,5 +287,47 @@ body{
 }
 
 /**********************************************************about********************************/
+
+
+/*----footer----------------------*/
+
+footer {
+    width: 100vw;
+    height: 100vh;
+    color: #7dbbb4;
+    background-image: url('../resources/mob-footer.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#leftFooter {
+    padding-top: 60vh;
+    width: 50vw;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+
+#leftFooter h1, #rightFooter h3 {
+    padding-bottom: 1vh;
+    font-weight: normal;
+}
+
+#rightFooter {
+    width: 40vw;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+
+#bottomFooter {
+    width: 50vw;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+
+/*------------------------------------------------------------*/
+
 
 

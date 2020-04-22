@@ -1,3 +1,12 @@
+#rightFooter ul li a {
+    color: #b25274;
+}
+
+#rightFooter ul li {
+	padding-bottom: 1vh;
+}
+
+
 #topPicks section img{
     width: 90vw;
     height: 30vh;

@@ -4,7 +4,7 @@
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="./style/reset.css">
+      <link rel="stylesheet" href="../style/reset.css">
       <link rel="stylesheet" href="./style/about.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <title>Home Page</title>
@@ -12,10 +12,40 @@
 
 </head>
 
+
 <body>
       <header>
 
+            <ul>
+                  <li><a href="/"><img src="../resources/logo.png" alt="Molhem logo"></a></li>
+                  <nav>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/search/new">Search</a></li>
+                        <li><a href="/saved">Saved ideas</a></li>
+                        <!-- <li><a href="">Ideas Board</a></li> -->
+                        <li><a href="about.html">About us</a></li>
+                  </nav>
+                  <button id="hamburgerBtn"><img src="../resources/menuIcon5.png" alt="menu icon"></button>
+            </ul>
+            <!-- Hamburger Menu For the mobile view -->
+            <div id="hamburgerMenu">
+                  <ul>
+                        <nav>
+                              <li><a href="/">Home</a></li>
+                              <li><a href="/search/new">Search</a></li>
+                              <li><a href="/saved">Saved ideas</a></li>
+                              <!-- <li><a href="">Ideas Board</a></li> -->
+                              <li><a href="about.html">About us</a></li>
+                        </nav>
+                  </ul>
+            </div>
+
+            <h1 style="width: 20vw; padding: 30vh 10vw;">
+                  Learn more about our Team members.                             
+            </h1>
+
       </header>
+
 
       <section class="team">
             <div class="container">
@@ -26,7 +56,7 @@
                               <img src="resources/two.jpg" alt="team img" />
                               <h4>Mohamad Ahmad </h4>
                               <h5>Telecommunications and electronics engineering</h5>
-                              <p>Life is like debugging postgres problems</p>
+                              <p>To win big, you sometimes have to take big risks. </p>
                         </div>
                   </div>
                   <div class="card">
@@ -34,7 +64,7 @@
                               <img src="resources/three.jpg" alt="team img" />
                               <h4>Fatema Owedah </h4>
                               <h5>Architect</h5>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                              <p>Yesterday is history, tomorrow is mystery , today is gift so it's called present.</p>
                         </div>
                   </div>
                   <div class="card">
@@ -42,7 +72,7 @@
                               <img src="resources/one.png" alt="team img" />
                               <h4>Diana Alazzam</h4>
                               <h5>Architect</h5>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                              <p>What we really are is something more than we can plan.</p>
                         </div>
                   </div>
                   <div class="card">
@@ -50,7 +80,7 @@
                               <img src="resources/four.png" alt="team img" />
                               <h4>nermin alnasasra</h4>
                               <h5>Computer Engineer</h5>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                              <p>To be, or not to be.</p>
                         </div>
                   </div>
                   <div class="card">
@@ -58,7 +88,7 @@
                               <img src="resources/five.jpg" alt="team img" />
                               <h4>Hammad Ali</h4>
                               <h5>Mechanical Engineer</h5>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                              <p>Don't let yesterday take up too much of today.</p>
                         </div>
                   </div>
 
@@ -66,8 +96,51 @@
       </section>
 
 
+      <footer>
 
-      <footer></footer>
+            <div id="leftFooter">
+                  <h1>MOLHEM</h1>
+                  <p>In our site you will see all the the things that will inspire you</p>
+            </div>
+
+            <div id="rightFooter">
+                  <h3>Quick Links</h3>
+                  <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/search/new">Search</a></li>
+                        <li><a href="/saved">Saved ideas</a></li>
+                        <li><a href="about.html">About us</a></li>
+                  </ul>
+            </div>
+
+            <div id="bottomFooter">
+                  Copyright &copy; Molhem 2020.
+            </div>
+
+
+      </footer>
+
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+
+      <script>
+
+            $(document).ready(() => {
+
+                  $('#hamburgerMenu').hide();
+
+                  $('#hamburgerBtn').on('click', () => {
+                        $('#hamburgerMenu').toggle();
+                  })
+            })
+      </script>
+
+
+
 
 </body>
 

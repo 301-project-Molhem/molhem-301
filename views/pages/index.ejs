@@ -47,6 +47,7 @@
             <section>
                 <button class="btnMain">save idea</button>
                 <div id="top12Div">
+                    
                     <div class="front">
                         <img src="<%=item.img_url%>">
                     </div>
@@ -121,8 +122,8 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:8000/',
-                    // url:'https://molhem-development.herokuapp.com/',
+                    // url: 'http://localhost:8000/',
+                    url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
                         console.log('success function', res);
