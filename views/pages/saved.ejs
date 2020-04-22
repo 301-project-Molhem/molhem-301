@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&family=Lobster+Two:ital,wght@1,700&family=Poiret+One&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Buda:wght@300&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/savedPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <%-include('../layout/header')%>
+    </header>
+    <main id="mainID">
+
+        <h1>Saved Ideas</h1>
+
+        <section id="topPicks">
+
+            <%data.forEach(item =>{%>
+            <div>
+
+                <section>
+
+
+
+
+
+                    <img src="<%=item.img_url%>" alt="">
+                    <!-- <object data="<%=item.img_url%>" ></object> -->
+                    <!-- <embed src="<%=item.img_url%>" width="300" height="200"> -->
+
+
+                    <div>
+
+                        <h2>Title:<%= item.title %></h2>
+                        <h3>Creator:<%= item.creator_name%></h3>
+                        <h4>Categories:<%= item.categories%></h4>
+                        <h5>Source: <a href="<%=item.source_url%>"></a><%=item.source_url%></a></h5>
+                        <h6>likes: <%= item.likes%></h6>
+                        <p>Notes: <%=item.notes%></p>
+                        <p>Score: <%=item.scoreoften%></p>
+                    </div>
+
+
+                </section>
+
+
+
+                <form action="/saved/delete?_method=delete" method="POST">
+                    <button type="submit">Delete</button>
+                    <input type="hidden" value="<%=item.id%>" name="itemID">
+                </form>
+
+                <button class="editBtn">Edit</button>
+
+
+                <section class="updateForm">
+
+
+                    <form action="/saved/update?_method=put" method="POST" class="editForm">
+                        <input type="hidden" value="<%=item.img_url%>" name="imgEdit">
+                        <label for="titleEdit">
+                            <input type="text" value="<%= item.title %>" name="titleEdit">
+                        </label>
+                        <label for="categEdit">
+                            <input type="text" value="<%= item.categories%>" name="categEdit">
+                        </label>
+                        <input type="hidden" value="<%= item.creator_name%>" name="creatorEdit">
+                        <input type="hidden" value="<%=item.source_url%>" name="imgSrcEdit">
+                        <input type="hidden" value="<%= item.likes%>" name="likesEdit">
+                        <label for="noteEdit">
+                            <textarea name="noteEdit" id="" cols="30" rows="10"
+                                placeholder="Write any note about this idea"></textarea>
+                        </label>
+                        <input type="hidden" value="<%=item.id%>" name="itemID">
+                        <select name="scoreEdit">
+                            <option name="scoreEdit" value="1">1</option>
+                            <option name="scoreEdit" value="2">2</option>
+                            <option name="scoreEdit" value="3">3</option>
+                            <option name="scoreEdit" value="4">4</option>
+                            <option name="scoreEdit" value="5">5</option>
+                        </select>
+                        <button id="confirmBtn">Confirm Edits</button>
+                    </form>
+
+                </section>
+            </div>
+
+            <% }) %>
+
+        </section>
+
+    </main>
+    <footer>
+        <%-include('../layout/footer')%>
+    </footer>
+    <%-include('../layout/script')%>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#hamburgerMenu').hide();
+
+            $('#hamburgerBtn').on('click', () => {
+                $('#hamburgerMenu').toggle();
+            })
+
+            // $('.editBtn').on('click', ()=> {
+            //     $('#topPicksSaved').hide();
+            //     $(this).next('.editForm').show();
+
+            // })
+
+
+            $('.updateForm').hide();
+            $('.editBtn').on('click', function () {
+                $(this).next('.updateForm').toggle();
+            })
+        })
+    </script>
+
+</body>
+
+</html>

@@ -2,80 +2,79 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('../layout/head')%>
+
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/search.css">
     <title>Search</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/base.css">
 </head>
 
 <body>
     <header>
-        <ul>
-            <li><a href="index.html"><img src="./resources/logo.png" alt="Molhem logo"></a></li>
-            <nav>
-                <li><a href="">Home</a></li>
-                <li><a href="">Search</a></li>
-                <li><a href="">Saved ideas</a></li>
-                <li><a href="">Ideas Board</a></li>
-                <li><a href="">About us</a></li>
-            </nav>
-            <button id="hamburgerBtn"><img src="./resources/menuIcon.png" alt="menu icon"></button>
-        </ul>
-        <!-- Hamburger Menu For the mobile view -->
-        <div id="hamburgerMenu">
-            <ul>
-                <nav>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Search</a></li>
-                    <li><a href="">Saved ideas</a></li>
-                    <li><a href="">Ideas Board</a></li>
-                    <li><a href="">About us</a></li>
-                </nav>
-            </ul>
-        </div>
+        <%-include('../layout/header')%>
         <h1>Start searching for new ideas!</h1>
-        <a href="#mainIDSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
+        <a href="#mainIDSearch" class="arrow"><img src="../resources/arrow-icon5.png" alt="arrow icon"></a>
     </header>
 
     <main>
+
         <section id="mainIDSearch">
-            <form action="">
-                <legend>Search</legend>
+            <form action="/search" method="POST">
+                <legend>Search For New Ideas</legend>
+
                 <label for="">
-                    <input type="text" placeholder="search for ideas">
+                    <input type="text" name="picName" placeholder="Search for ideas">
                 </label>
-                <label for=""><input type="radio">Dribble</label>
-                <label for=""><input type="radio">Pixabay</label>
+                <div>
+                    <label for="">
+                        <input type="radio" name="selectApi" value="unsplash">
+                        Unsplash
+                    </label>
+
+                    <label for="">
+                        <input type="radio" name="selectApi" value="pixabay">
+                        Pixabay
+                    </label>
+                </div>
+
+                <div>
+
+                    <label for="">
+                        <input type="radio" name="selectType" value="image">
+                        image
+                    </label>
+                    <label for="">
+                        <input type="radio" name="selectType" value="video">
+                        video
+                    </label>
+                </div>
+
+
                 <button type="submit">Search</button>
+
             </form>
-
+            <!-- <div class="alert alert-success" role="alert"><%- messages.success%></div> -->
         </section>
-
-        <section id="results">
-            <div id="dribbleResults">
-
-            </div>
-
-            <div id="pixabayResults">
-
-            </div>
-
-        </section>
-        
 
     </main>
 
     <footer>
-        <p>All Rights Reserved @2020</p>
+        <%-include('../layout/footer')%>
 
     </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://unpkg.com/mustache@latest"></script> -->
-    <script src="js/app.js"></script>
+    <%-include('../layout/script')%>
+
+    <script>
+        $(document).ready(() => {
+            $('#hamburgerMenu').hide();
+
+            $('#hamburgerBtn').on('click', () => {
+                $('#hamburgerMenu').toggle();
+            })
+        })
+    </script>
 
 </body>
 
