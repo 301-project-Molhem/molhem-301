@@ -3,9 +3,9 @@
 
 <head>
     <%-include('../layout/head')%>
-  
+
     <link rel="stylesheet" href="../style/reset.css">
-    <link rel="stylesheet" href="../style/base.css"> 
+    <link rel="stylesheet" href="../style/base.css">
     <title>Search</title>
 </head>
 
@@ -13,26 +13,42 @@
     <header>
         <%-include('../layout/header')%>
         <h1>Start searching for new ideas!</h1>
-        <a href="#mainIDSearch" class="arrow"><img src="../resources/arrow-icon.png" alt="arrow icon"></a>
+        <a href="#mainIDSearch" class="arrow"><img src="../resources/arrow-icon5.png" alt="arrow icon"></a>
     </header>
 
     <main>
+
         <section id="mainIDSearch">
             <form action="/search" method="POST">
-                <legend>Search</legend>
+                <legend>Search For New Ideas</legend>
+
                 <label for="">
-                    <input type="text" name="picName" placeholder="search for ideas">
+                    <input type="text" name="picName" placeholder="Search for ideas">
                 </label>
-                <label for="">
-                    <input type="radio" name="selectApi" value="unsplash">Unsplash</label>
+                <div>
+                    <label for="">
+                        <input type="radio" name="selectApi" value="unsplash">
+                        Unsplash
+                    </label>
 
-                <label for="">
-                    <input type="radio" name="selectApi" value="pixabay">Pixabay</label>
+                    <label for="">
+                        <input type="radio" name="selectApi" value="pixabay">
+                        Pixabay
+                    </label>
+                </div>
 
-                <label for="">
-                    <input type="radio" name="selectType" value="image">image</label>
-                <label for="">
-                    <input type="radio" name="selectType" value="video">video</label>
+                <div>
+
+                    <label for="">
+                        <input type="radio" name="selectType" value="image">
+                        image
+                    </label>
+                    <label for="">
+                        <input type="radio" name="selectType" value="video">
+                        video
+                    </label>
+                </div>
+
 
                 <button type="submit">Search</button>
 

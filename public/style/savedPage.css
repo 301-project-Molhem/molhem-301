@@ -1,0 +1,165 @@
+ #topPicks section object[data]{
+    width: 90vw;
+    height: 30vh;
+}
+#button{
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    margin: 5vw;
+    border: 1px black solid;
+}
+.formButton{
+    width: 20vw;
+    text-align: center;
+    margin: 0 auto;
+}
+.editBtn{
+    font-size: 1em;
+    border-radius: 15px;
+    width: 60vw;
+    height: 7vh;
+    margin: 5% 20%;
+}
+.updateForm{
+    text-align: center;
+    margin: 0 auto;
+}
+.updateForm textarea{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 80vw;
+}
+.updateForm select{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 80vw;
+    margin-bottom: 2%;
+}
+@media (min-width: 1025px) {
+#topPicks section object{
+    width: 30vw;
+    margin: 0vw;
+    height: 50vh;
+}
+#topPicks button{
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    border: 1px black solid;
+}
+#button{
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    margin: 5vw;
+    border: 1px black solid;
+}
+.formButton{
+    width: 20vw;
+    text-align: center;
+    margin: 0 auto;
+}
+.editBtn{
+    font-size: 1em;
+    border-radius: 15px;
+    width: 60vw;
+    height: 7vh;
+    margin: 5% 20%;
+}
+.updateForm{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+}
+.updateForm textarea{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+}
+form input[type = text] {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+}
+.updateForm select{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 28vw;
+    margin-bottom: 2%;
+}
+.topPicks div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+#resultDiv div h2, #resultDiv div h3, #resultDiv div h4, #resultDiv div h5, #resultDiv div h6 {
+    clear: both;
+    text-align: center;
+    margin-left: 0vw;
+}
+#resultDiv div {
+    padding: 45px;
+    margin-left: 0px;
+}
+#topPicks section div {
+    padding: 2vw;
+}
+
+
+
+#topPicks form button, #topPicks div button  {
+
+    width: 30vw;
+    padding: 2vw;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #7daf8a;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    border-radius: 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+}
+
+
+#topPicks section div section div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vw;
+
+}
+
+
+#topPicks form button:hover, #topPicks div button:hover {
+
+    color: #ffffff;
+    background-color: #b25274;
+    box-shadow: 0px 15px 20px rgba(5, 61, 52, 0.287);
+    transform: translateY(-7px);
+
+}
+
+}
+

@@ -46,7 +46,6 @@ app.get('/search/new', (request, response) => {
 
 /////////////////////////////////search page ////////////////////////////////////////////////////
 app.post('/search', (request, response) => {
-
     let fullArr = [];
     let searchType = request.body.selectType;
     let apiSelect = request.body.selectApi;
@@ -56,19 +55,15 @@ app.post('/search', (request, response) => {
     let videoURL = `https://pixabay.com/api/videos/?key=${videoKey}&q=${searchKeyword}`
     let imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
     let unsplashURL = `https://api.unsplash.com/search/photos?query=${searchKeyword}&client_id=${unsplashKey}`;
-
     superagent.get(imageUrlPix)
         .then((pixRes) => {
             let pixData = pixRes.body.hits;
             let pixDataArray = pixData.map((data) => {
                 return new Photos(data);
             });
-
             pixDataArray.forEach((item) => fullArr.push(item))
             return (fullArr);
-
         }).then((fullArr) => {
-
             return superagent.get(unsplashURL).then((unsplashRes) => {
                 let unsplashBody = unsplashRes.body.results;
                 let unsplashArray = unsplashBody.map(item => {
@@ -77,7 +72,6 @@ app.post('/search', (request, response) => {
                 unsplashArray.forEach((item) => fullArr.push(item))
                 return fullArr;
             })
-
         }).then((fullArr) => {
             if (apiSelect === 'pixabay') {
                 let pixaBay = fullArr.slice(0, 20);

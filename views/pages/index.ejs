@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <%-include('../../layout/head')%>
+
+    <%-include('../layout/head')%>
     <title>Home Page</title>
 
 
@@ -10,10 +11,9 @@
 
 <body>
     <header>
-        <%-include('../../layout/header')%>
+        <%-include('../layout/header')%>
 
-        <!--  -->
-        <div id=container>
+        <!-- <div id=container>
             Out of Creative fuel?
             <div id=flip>
                 <div>
@@ -27,14 +27,16 @@
                 </div>
             </div>
             is here to inspire you!
-        </div>
+        </div> -->
 
 
 
         <!--  -->
 
         <!-- <h1>Out of Creative fuel?<span> Molhem </span>is here to inspire you!</h1> -->
-        <a href="#mainID" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
+        <h1>Images that do not leave us, but enter with the intention of staying.</h1>
+
+        <a href="#mainID" class="arrow"><img src="./resources/arrow-icon5.png" alt="arrow icon"></a>
 
     </header>
 
@@ -45,106 +47,67 @@
             <section>
                 <button class="btnMain">save idea</button>
                 <div id="top12Div">
-                    <!-- <img src="<%=item.img_url%>">
-                    <div>
-                        <h2> <span class="nameForm">Title: </span>      <span class="containForm"> <%= item.title %> </span> </h2>
-                        <h3> <span class="nameForm">Creator: </span>    <span class="containForm"><%= item.creator_name%> </span> </h3>
-                        <h4> <span class="nameForm"> Categories:</span> <span class="containForm"><%= item.categories%> </span>  </h4>
-                        <h5> <span class="nameForm">  Source: </span>   <span id="containForm"> <a href="<%=item.source_url%>"><%=item.source_url%></a></span>  </h5>
-                        <h6> <span class="nameForm"> likes:</span>      <span class="containForm"><%= item.likes%> </span> </h6> -->
-                
-                        <div class="flip-box">
-                            <div class="flip-box-inner">
-                                <div class="flip-box-front">
-                                    <img src="<%=item.img_url%>">
-                                </div>
-                                <div class="flip-box-back">
-                                <h2> <span class="nameForm">Title: </span> <span class="containForm"> <%= item.title %>
-                                    </span> </h2>
-                                <h3> <span class="nameForm">Creator: </span> <span
-                                        class="containForm"><%= item.creator_name%> </span> </h3>
-                                <h4> <span class="nameForm"> Categories:</span> <span
-                                        class="containForm"><%= item.categories%> </span> </h4>
-                                <h5> <span class="nameForm"> Source: </span> <span id="containForm"> <a
-                                            href="<%=item.source_url%>"><%=item.source_url%></a></span> </h5>
-                                <h6> <span class="nameForm"> likes:</span> <span class="containForm"><%= item.likes%>
-                                    </span> </h6>
-                            </div>
-                           
-                        </div>
-                        <!-- </div> -->
+                    <div class="front">
+                        <img src="<%=item.img_url%>">
+                    </div>
+                    <div class="back">
+                        <h2>
+                            <span class="nameForm">Title: </span> <span class="containForm"> <%= item.title %></span>
+                        </h2>
+                        <h3>
+                            <span class="nameForm">Creator: </span> <span
+                                class="containForm"><%= item.creator_name%></span>
+                        </h3>
+                        <h4>
+                            <span class="nameForm"> Categories:</span> <span
+                                class="containForm"><%= item.categories%></span>
+                        </h4>
+                        <h5>
+                            <span class="nameForm"> Source:</span>
+                            <span id="containForm"> <a href="<%=item.source_url%>"><%=item.source_url%></a></span>
+                        </h5>
+                        <h6>
+                            <span class="nameForm"> likes:</span>
+                            <span class="containForm"><%= item.likes%> </span>
+                        </h6>
 
-                        <!-- <form action="/" method="POST" >
-                    <input type="text" name="img_url" value="<%=item.img_url%>">
-                    <input type="text" name="title" value="<%= item.title %>">
-                    <input type="text" name="creator_name" value="<%= item.creator_name%>">
-                    <input type="text" name="categories" value="<%= item.categories%>">
-                    <input type="text" name="source_url" value="<%=item.source_url%>">
-                    <input type="text" name="likes" value=" <%= item.likes%>">
-                </form> -->
                     </div>
                 </div>
+
             </section>
             <% }) %>
-            <a href="#toSearch" class="arrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
 
+
+            <a href="#toSearch" class="arrow"><img src="./resources/arrow-icon5.png" alt="arrow icon"></a>
         </section>
 
 
 
         <section id="toSearch">
             <div>
-                <h1>Not Inspired Yet? Search for other ideas Now!</h1>
-                <a href="">SEARCH</a>
+                <h1>Not Inspired Yet? Search for new ideas Now!</h1>
+                <a href="/search/new">SEARCH</a>
             </div>
-
-            <a href="#toSaved1" id="toSavedArrow"><img src="./resources/arrow-icon.png" alt="arrow icon"></a>
-
         </section>
 
-        <!-- <h1 id="toSaved1">Check Saved Ideas!</h1>
-        <section id="toSaved">
-
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                </div>
-            </section>
-            <section>
-                <img src="./resources/placeholder.png" alt="">
-                <div>
-                    <h2>Title: The ultimate test of tests 2</h2>
-                    <h3>Creator: Lorem Bin Ipsum Althani</h3>
-                    <p>Categories: Art - Drawing - Abstract</p>
-                    <p>Scource: Pixabay</p>
-                </div>
-            </section>
-            <a href="">See more saved ideas</a>
-        </section> -->
 
     </main>
 
 
     <footer>
-        <!-- <%-include('../layout/footer')%> -->
+        <%-include('../layout/footer')%>
     </footer>
     <%-include('../layout/script')%>
     <script>
 
         $(document).ready(() => {
+
+            $('#hamburgerMenu').hide();
+
+            $('#hamburgerBtn').on('click', () => {
+                $('#hamburgerMenu').toggle();
+            })
+
             $('.btnMain').on('click', function (event) {
                 event.preventDefault();
                 const data = {
@@ -158,7 +121,7 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:5000/',
+                    url: 'http://localhost:8000/',
                     // url:'https://molhem-development.herokuapp.com/',
                     data: JSON.stringify(data),
                     success: function (res) {
