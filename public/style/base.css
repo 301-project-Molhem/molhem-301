@@ -31,11 +31,15 @@ header ul nav {
     display: none;
 }
 
+
+
 #hamburgerMenu ul nav {
     display: flex;
     flex-direction: column;
     align-items: left;
     width: 100vw;
+    margin-left:-5vw;
+
     justify-content: center;
     align-items: center;
     line-height: 10vh;
@@ -141,6 +145,10 @@ header span {
     text-shadow: 4px 4px 4px rgba(178, 82, 116, 0.315);
 }
 
+#mainIDSearch, #results {
+    background-image: url('../resources/desktop-background-none.jpg');
+}
+
 #topPicks section {
     width: 90vw;
     display: flex;
@@ -218,30 +226,25 @@ header span {
 
 #topPicks section {
     width: 90vw;
-    height: 35vh;   
+    height: 35vh;
     overflow: hidden;
- 
 }
 
 .front, .back {
     width: 90vw;
     height: 35vh;
     overflow: hidden;
-
 }
 
 .front img {
     overflow: hidden;
 }
 
-/* flip speed goes here */
-
 #top12Div {
     transition: 0.6s;
     transform-style: preserve-3d;
     position: relative;
 }
-/* hide back of pane during swap */
 
 .front, .back {
     backface-visibility: hidden;
@@ -250,15 +253,11 @@ header span {
     left: 0;
 }
 
-/* front pane, placed above back */
-
 .front {
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
 }
-
-/* back, initially hidden pane */
 
 .back {
     transform: rotateY(180deg);
@@ -307,8 +306,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 #leftFooter {
     padding-top: 60vh;
     width: 50vw;
@@ -321,19 +320,17 @@ footer {
     font-weight: bold;
 }
 
-
 #rightFooter {
     width: 40vw;
     margin-bottom: 5vh;
     text-align: center;
-
 }
+
 #bottomFooter {
     width: 50vw;
     margin-bottom: 5vh;
     text-align: center;
 }
-
 
 /*------------------------------------------------------------*/
 
@@ -397,24 +394,8 @@ footer {
 
 /******************result page***********************/
 
-#results {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100vw;
-    justify-content: space-evenly;
-}
-
-#resultDiv {
-    margin: 0px;
-    font-family: 'Roboto';
-    text-align: center;
-    height: 500px;
-    width: 500px;
-}
-
 #resultDiv img {
-    width: 40vw;
+    width: 90vw;
 }
 
 #resultDiv div {
@@ -430,6 +411,26 @@ footer {
 
 #resultDiv div h2 span, #resultDiv div h3 span, #resultDiv div h4 span, #resultDiv div h5 span, #resultDiv div h6 span {
     font-size: x-large;
+}
+
+#mainIDSearch, #mainIDSearch form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#resultDiv, #results ::selection {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    margin: 5vw;
+    background-image: url('../resources/desktop-background-none.jpg');
+    box-shadow: 4px 8px 16px 0px rgba(66, 66, 66, 0.274);
+}
+
+#resultDiv object {
+    width: 90vw;
 }
 
 /*------------------------------------------------ */
@@ -659,5 +660,35 @@ footer {
     .back {
         transform: rotateY(180deg);
     }
+
     /*-----------------------------------------------------------------------------*/
+    #mainIDSearch, #mainIDSearch form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #resultDiv, #results ::selection {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        margin: 5vw;
+        background-image: url('../resources/desktop-background-none.jpg');
+        box-shadow: 4px 8px 16px 0px rgba(66, 66, 66, 0.274);
+    }
+}
+
+.editForm {
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.editForm input, .editForm textarea, .editForm select {
+    width: 70vw;
+}
+
+.editForm button {
+    padding-top: 1vh;
 }

@@ -46,27 +46,24 @@ app.get('/search/new', (request, response) => {
 
 /////////////////////////////////search page ////////////////////////////////////////////////////
 app.post('/search', (request, response) => {
-
     let fullArr = [];
     let searchType = request.body.selectType;
     let apiSelect = request.body.selectApi;
     let searchKeyword = request.body.picName;
     let unsplashKey = process.env.UNSPLASH_KEY;
+    let videoKey = process.env.VIDEO_KEY;
+    let videoURL = `https://pixabay.com/api/videos/?key=${videoKey}&q=${searchKeyword}`
     let imageUrlPix = `https://pixabay.com/api/?key=16102900-d7963a65628f8edaa82e9259f&q=${searchKeyword}`;
     let unsplashURL = `https://api.unsplash.com/search/photos?query=${searchKeyword}&client_id=${unsplashKey}`;
-
     superagent.get(imageUrlPix)
         .then((pixRes) => {
             let pixData = pixRes.body.hits;
             let pixDataArray = pixData.map((data) => {
                 return new Photos(data);
             });
-
             pixDataArray.forEach((item) => fullArr.push(item))
             return (fullArr);
-
         }).then((fullArr) => {
-
             return superagent.get(unsplashURL).then((unsplashRes) => {
                 let unsplashBody = unsplashRes.body.results;
                 let unsplashArray = unsplashBody.map(item => {
@@ -75,7 +72,6 @@ app.post('/search', (request, response) => {
                 unsplashArray.forEach((item) => fullArr.push(item))
                 return fullArr;
             })
-
         }).then((fullArr) => {
             if (apiSelect === 'pixabay') {
                 let pixaBay = fullArr.slice(0, 20);
@@ -83,6 +79,19 @@ app.post('/search', (request, response) => {
             } else if (apiSelect === 'unsplash') {
                 let unsplash = fullArr.slice(20, 30);
                 response.render('pages/results', { keyPhoto: unsplash });
+            } else if (searchType === 'video') {
+                superagent.get(videoURL)
+                    .then((videoRes) => {
+                        let videoData = videoRes.body.hits;
+                        let videoDataArray = videoData.map((data) => {
+                            return new Videos(data);
+                        })
+                        videoDataArray.forEach((item) => fullArr.push(item))
+                        response.render('pages/results', { keyPhoto: videoDataArray })
+                    })
+            } else if (searchType === 'image') {
+                let fullArr2 = fullArr.slice(0, 30);
+                response.render('pages/results', { keyPhoto: fullArr2 });
             } else {
                 response.render('pages/results', { keyPhoto: fullArr });
             }
@@ -256,6 +265,15 @@ function Ideas(item) {
     this.source_url = (item.user.portfolio_url ? item.user.portfolio_url : item.urls.full);
     this.likes = item.likes;
     this.img_url = item.urls.full;
+}
+
+function Videos(item) {
+    this.title = item.tags;
+    this.creator_name = item.user;
+    this.categories = item.type;
+    this.source_url = item.pageURL;
+    this.likes = item.likes;
+    this.img_url = item.videos.medium.url;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
