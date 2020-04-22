@@ -159,8 +159,9 @@ header span {
 }
 
 #topPicks section button {
+    height: 6vh;
     width: 90vw;
-    padding: 5vw;
+    padding: 0vw;
     font-size: 1em;
     color: #ffffff;
     background-color: #7daf8a;
@@ -184,9 +185,6 @@ header span {
     display: none;
 }
 
-#topPicks section:hover {
-    opacity: 80%;
-}
 
 #topPicks section img {
     width: 90vw;
@@ -194,7 +192,7 @@ header span {
 }
 
 #topPicks section div {
-    padding: 0vw 0vw;
+    padding: 8vw 0vw;
 }
 
 #topPicks section div>* {
@@ -230,10 +228,29 @@ header span {
     overflow: hidden;
 }
 
-.front, .back {
+.front {
     width: 90vw;
     height: 35vh;
+    /* overflow: hidden; */
+}
+
+.back {
+    width: 90vw;
+    height: 50vh;
     overflow: hidden;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    /* padding: 6vw 0vw; */
+    color: #40745c;
+    /* justify-content: center; */
+    flex-direction: column;
+
+}
+#topPicks section div {
+    padding: 8vw 0vw;
 }
 
 .front img {
@@ -371,6 +388,7 @@ footer {
 }
 
 #mainIDSearch button {
+    height: 1vh;
     width: 80vw;
     border-radius: 2vw;
     padding: 5vw;
@@ -513,7 +531,7 @@ footer {
         padding: 0vw;
     }
     #topPicks section div {
-        padding: 0vw 0vw;
+        padding: 8vw 0vw;
     }
     #topPicks section div>* {
         padding-bottom: 1.5vh;
@@ -614,8 +632,8 @@ footer {
     #bottomFooter {
         grid-row-start: 2;
         grid-row-end: 3;
-        grid-column-start: 2;
-        grid-column-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
         display: flex;
         justify-content: center;
         align-items: center;
