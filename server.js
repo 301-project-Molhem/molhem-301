@@ -105,7 +105,7 @@ app.post('/search', (request, response) => {
 app.post('/search/add', (req, res) => {
     console.log(req.body.imgHid);
 
-    let { imgHid,titleHid, creatorHid, categoriesHid, sourceHid,likesHid } = req.body;
+    let { imgHid, titleHid, creatorHid, categoriesHid, sourceHid, likesHid } = req.body;
 
     let searchSQL = 'SELECT * FROM savedIdeas WHERE source_url=$1'
     let searchVal = [sourceHid];
@@ -114,16 +114,16 @@ app.post('/search/add', (req, res) => {
         if (searchResult.rows.length === 0) {
             console.log('hi')
             let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_url,likes) VALUES ($1,$2,$3,$4,$5,$6);';
-            let safeValues = [imgHid,titleHid, creatorHid, categoriesHid, sourceHid,likesHid];
+            let safeValues = [imgHid, titleHid, creatorHid, categoriesHid, sourceHid, likesHid];
             return client.query(SQL, safeValues)
                 .then(() => {
                     res.status(200).json({ status: 'done' });
-           
+
                 })
 
         } else {
             res.status(200).json({ status: 'done' });
-           
+
         }
     })
 
@@ -137,13 +137,13 @@ app.put('/saved/update', updateSaved);
 
 function updateSaved(req, res) {
     console.log('Hi', req.body.scoreEdit)
-    let {titleEdit, categEdit, scoreEdit, noteEdit, itemID} = req.body;
+    let { titleEdit, categEdit, scoreEdit, noteEdit, itemID } = req.body;
     let sqlUpdate = 'UPDATE savedIdeas SET title=$1, categories=$2, scoreOfTen=$3, notes=$4 WHERE id=$5';
     let updateVal = [titleEdit, categEdit, scoreEdit, noteEdit, itemID];
-    client.query(sqlUpdate, updateVal).then((updateRes)=> {
+    client.query(sqlUpdate, updateVal).then((updateRes) => {
         let updatedNoteAndScore = 'SELECT notes, scoreOfTen FROM savedIdeas WHERE id=$1'
         let noteAndScoreVal = [itemID]
-        client.query(updatedNoteAndScore, noteAndScoreVal).then((noteAndScoreRes)=> {
+        client.query(updatedNoteAndScore, noteAndScoreVal).then((noteAndScoreRes) => {
             console.log('hey', noteAndScoreRes.rows[0].scoreoften);
             res.redirect('/saved');
         })
@@ -154,16 +154,16 @@ function updateSaved(req, res) {
 
 
 /********************************************Delete*********************************************/
-app.delete('/saved/delete',deleteSaved);
-function deleteSaved(req,res){
-    let {itemID} = req.body;
+app.delete('/saved/delete', deleteSaved);
+function deleteSaved(req, res) {
+    let { itemID } = req.body;
     console.log(itemID);
     let sqlDelete = 'DELETE FROM savedIdeas  WHERE id=$1';
-    let deleteValues=[itemID];
-    client.query(sqlDelete,deleteValues)
-    .then(()=>{
-      res.redirect('/saved');  
-    })
+    let deleteValues = [itemID];
+    client.query(sqlDelete, deleteValues)
+        .then(() => {
+            res.redirect('/saved');
+        })
 }
 /////////////////////////////////home page/////////////////////////////////////////////////////
 app.get('/', topten);
@@ -210,7 +210,7 @@ function topten(req, res) {
 
 app.post('/', saveidea);
 function saveidea(req, res) {
-    let img_url=req.body.img_url;
+    let img_url = req.body.img_url;
     let title = req.body.title;
     let likes = req.body.likes;
     let creator_name = req.body.creator_name;
@@ -223,7 +223,7 @@ function saveidea(req, res) {
         .then((mainResult) => {
             if (mainResult.rows.length === 0) {
                 let SQL = 'INSERT INTO savedIdeas (img_url,title,creator_name,categories,source_url,likes) VALUES ($1,$2,$3,$4,$5,$6);';
-                let saveValues = [img_url,title, creator_name, categories, source_url, likes];
+                let saveValues = [img_url, title, creator_name, categories, source_url, likes];
                 return client.query(SQL, saveValues)
                     .then(() => {
                         res.status(200).json({ status: 'done' });
@@ -231,7 +231,7 @@ function saveidea(req, res) {
                     })
             } else {
                 res.status(200).json({ status: 'done' });
-             
+
             }
 
         })
@@ -242,7 +242,7 @@ function save(req, res) {
     let SQL = 'SELECT * FROM savedIdeas;';
     client.query(SQL)
         .then(result => {
-            res.render('pages/saved', { data: result.rows});
+            res.render('pages/saved', { data: result.rows });
         });
 }
 
