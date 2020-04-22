@@ -9,4 +9,4 @@
 - Diana Alazzam.
 
 **Wire-frame**
-![project wireframe](./resources/wireframe.jpg)
+![project wireframe](./public/resources/wireframe.jpg)
