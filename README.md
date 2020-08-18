@@ -1,7 +1,7 @@
 # Molhem
 301 Project - Molhem is a website that inspires its user's from different creative backgrounds with new ideas.
 
-**Deployed link** [molhem](https://molhem.herokuapp.com)
+**Deployed link** Please switch to mobile view [Molhem-Heroku](https://molhem.herokuapp.com)
 
 **Team Members** 
 - Mohamad Sheikh Alshabab.
